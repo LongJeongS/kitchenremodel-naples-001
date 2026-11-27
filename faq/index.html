@@ -46,7 +46,7 @@
 }
 
 /* ── DESIGN VARIETY: section pattern backgrounds ───────────────────────────────
-   One of these classes is applied to <body> via look-plain stats-brand-band order-proof-first. Patterns
+   One of these classes is applied to <body> via look-plain stats-brand-band order-proof-first stats-figure-plain heading-face-small. Patterns
    are subtle by design and applied to alternating sections to avoid visual
    noise. Stage 1 design_context.pattern_style selects which one. */
 
@@ -4841,6 +4841,47 @@ body.look-plain .cg-more-list li { border-bottom: 1px solid var(--border); }
 body.look-plain .cg-more-list a { display: block; padding: 14px 0; font-size: 17px; font-weight: 600; color: var(--color-primary); }
 body.look-plain .cg-more-list a:hover { text-decoration: underline; }
 /* review-round-nov-2026:end */
+/* legibility-nov-2026:start */
+/* Legibility fixes 2026-11-27, from what tools/legibility_check.py measured on the first plain sites. One marked chunk
+   so older tests can compare "today minus these fixes" (tests/legibility_round.py); every rule is scoped to the plain look.
+   Numbers band: where the brand accent is under 3:1 on the brand colour the assembler adds stats-figure-plain and the
+   figures are white (Naples coral on green measured 2.3:1). A readable accent keeps its colour. */
+body.look-plain.stats-brand-band.stats-figure-plain #stats-bar .stat-value { color: #fff; }
+/* Call-to-action band: the paragraph sits inside .cta-band-inner, so the rule above for "#cta-band > .container > p"
+   never reached it and it stayed at the classic 75% white (4.1 to 4.4:1 over the tinted photo). This is the intended 92%. */
+body.look-plain #cta-band .cta-band-sub { color: rgba(255,255,255,0.92); }
+/* Blog post top section: the breadcrumb and the date line are full white, and a dark scrim sits behind the text block
+   (it fades in over the block's top padding), so a pale photo cannot wash them out: 30% black keeps white text at 4.5:1 or better even where the photo is pure
+   white over these brand colours. The photo keeps its 45%. */
+body.look-plain .post-hero-overlay { background-image: linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.3) 100%); }
+body.look-plain .post-breadcrumb, body.look-plain .post-breadcrumb a, body.look-plain .post-meta { color: #fff; }
+/* Photo service cards (photo_overlay): the dark fade hangs from the card title, so however long the card's text is the
+   title and the text sit on it. It replaces the fade that was fixed at 20% to 72% of the card's height (a long text
+   pushed the title up into its light part: 2.7:1 on a pale photo). The icon tile stays above it. */
+body.look-plain #services.services-variant-photo-overlay .svc-photo::after { background: rgba(10,22,30,0.05); }
+body.look-plain #services.services-variant-photo-overlay .service-card h3::before { content: ""; position: absolute; z-index: -1; left: -22px; right: -22px; top: -110px; height: 1200px; pointer-events: none; background: linear-gradient(180deg, rgba(10,22,30,0) 0, rgba(10,22,30,0.5) 110px, rgba(10,22,30,0.88) 180px); }
+body.look-plain #services.services-variant-photo-overlay .service-icon { z-index: 2; }
+/* Heading faces that are hard to read small (config/font_traits.json: small-bodied like Cormorant Garamond, whose 17px
+   reads like 12.8px, or condensed like Bebas Neue): the assembler adds heading-face-small and the headings of 18px and
+   under, the contents and sidebar titles, the footer brand name and the logo kicker are set in the body font, bold.
+   Larger headings keep the heading face. */
+body.look-plain.heading-face-small #services:not(.services-variant-photo-overlay) .service-card h3, body.look-plain.heading-face-small .area-service-card h3, body.look-plain.heading-face-small .vp-text h3, body.look-plain.heading-face-small .vp-text h4, body.look-plain.heading-face-small .vp-card h3, body.look-plain.heading-face-small .process-step h3, body.look-plain.heading-face-small .application-item h3, body.look-plain.heading-face-small .related-card h3, body.look-plain.heading-face-small .cg-faq-item h3, body.look-plain.heading-face-small .blog-card-title, body.look-plain.heading-face-small .contact-info-header h2, body.look-plain.heading-face-small .sidebar-card h3, body.look-plain.heading-face-small .cg-toc-title, body.look-plain.heading-face-small #site-footer .footer-brand-link, body.look-plain.heading-face-small #site-nav .nav-logo .nav-logo-kicker { font-family: var(--font-body); font-weight: 700; }
+/* Footer disclaimer: 14px on both footers (it was 13.5px, and 13px on the light footer: one paragraph on every page,
+   which alone put 7 to 9% of a referral site's characters under 14px). */
+body.look-plain .footer-disclaimer, body.look-plain #site-footer.footer-variant-light-minimal .footer-disclaimer { font-size: 14px; }
+/* Blog pages toggle `is-open` (templates/blog-*.html); open the menu and the dropdown on it too. */
+body.look-plain .nav-mobile-menu.is-open { display: flex; }
+body.look-plain .nav-dropdown.is-open .nav-dropdown-menu { opacity: 1; pointer-events: auto; transform: translateY(0); visibility: visible; }
+/* legibility-nov-2026:end */
+/* template-round-nov-2026:start */
+/* ── Template round 2026-11-27 (tests/test_plain_template_round.py; the start and end markers let older tests set this
+   chunk aside: tests/template_round.py) ── */
+/* The open phone menu sits inside the fixed top bar, so a menu taller than the screen was cut off with no way to reach
+   its last links and button (Naples, Bakersfield on a 390x667 phone). It now scrolls inside what is left of the screen
+   under the bar (and the strip, where a site shows one), on every top bar and on the blog pages, whose script opens it
+   with `is-open`. The dynamic viewport height keeps the last button above a phone browser's toolbar. */
+body.look-plain #site-nav .nav-mobile-menu.open, body.look-plain #site-nav .nav-mobile-menu.is-open { max-height: calc(100vh - var(--plain-bar-h) - var(--plain-strip-h)); max-height: calc(100dvh - var(--plain-bar-h) - var(--plain-strip-h)); overflow-y: auto; overscroll-behavior: contain; }
+/* template-round-nov-2026:end */
 /* === hero-photo-beside === */
 /* Top section: photo_beside (the one light top section: the photo at full brightness with no tint on the left, 55% of the width;
    headline, text and buttons in dark ink on the page background beside it; on phones the photo comes first and the text follows).
@@ -4899,7 +4940,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
   </style>
   
 </head>
-<body class="look-plain stats-brand-band order-proof-first">
+<body class="look-plain stats-brand-band order-proof-first stats-figure-plain heading-face-small">
   
 <a href="#page-content" class="skip-link">Skip to main content</a>
 <header id="site-nav" role="banner" class="nav-variant-split-centered-logo">
@@ -4927,7 +4968,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       </ul>
       <div class="nav-actions">
         <a href="tel:+12395550100" class="nav-phone" aria-label="Call us"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+1 (239) 555-0100</a>
-        <a href="/contact/" class="btn btn-primary">Start With a Plan</a>
+        <a href="/contact/" class="btn btn-primary">Request a Consultation</a>
       </div>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
     </nav>
@@ -4944,7 +4985,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
     <a href="/cost-guides/kitchen-remodel-cost-naples-fl/" onclick="closeMenu()">Price Guide</a>
     <a href="/contact/" onclick="closeMenu()">Contact</a>
     <a href="tel:+12395550100" onclick="closeMenu()" style="display:flex;align-items:center;gap:8px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+1 (239) 555-0100</a>
-    <a href="/contact/" class="btn btn-primary mobile-cta" onclick="closeMenu()">Start With a Plan</a>
+    <a href="/contact/" class="btn btn-primary mobile-cta" onclick="closeMenu()">Request a Consultation</a>
   </nav>
 </header>
 
@@ -4954,7 +4995,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
   <section class="faq-hero">
     <div class="container">
       <span class="section-eyebrow">Questions Naples Homeowners Ask</span>
-      <h1>Kitchen Remodeling Questions, Answered Plainly</h1>
+      <h1>Kitchen Remodeling Questions</h1>
       <p>Cost, schedule, Collier County permits, condo approvals and how a project runs while you are away.</p>
     </div>
   </section>
@@ -4981,15 +5022,15 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
             <div class="faq-accordion">
               <details class="faq-item" open>
                 <summary class="faq-question" tabindex="-1">How much does a kitchen remodel cost in Naples, FL?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
-                <div class="faq-answer">Local cost guides put most Naples full kitchen remodels roughly between $30,000 and $80,000, with refreshes such as refacing and new counters running about $15,000 to $30,000, and Florida per-square-foot figures landing around $100 to $350. Where a project falls depends on cabinet grade, stone and how much plumbing or electrical moves. Those are market observations. A measured plan with a written scope gives the real number for your kitchen.</div>
+                <div class="faq-answer">Full kitchen remodels in Naples typically run about $30,000 to $80,000 according to local cost guides, with refreshes such as refacing and new counters typically about $15,000 to $30,000, and Florida per-square-foot figures landing around $100 to $350. Where a project falls depends on cabinet grade, stone and how much plumbing or electrical moves. Those are market observations. A written quote for your own kitchen starts with a consultation.</div>
               </details>
               <details class="faq-item" open>
                 <summary class="faq-question" tabindex="-1">What should a kitchen remodel quote include so I can compare contractors?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
-                <div class="faq-answer">A drawn plan to scale, a scope that lists every item with its allowance, a schedule in weeks, the permit scope, and the workmanship terms in writing. If a quote gives one number with no allowances, you cannot tell what cabinet grade or stone it assumes, and that is where price differences between quotes tend to hide. Ask each firm for its cabinet allowance, its stone allowance and the week stone installs. Compare those, not the headline number.</div>
+                <div class="faq-answer">A drawn plan to scale, a scope that lists every item with its allowance, a written schedule, the permit scope, and the workmanship terms in writing. If a quote gives one number with no allowances, you cannot tell what cabinet grade or stone it assumes, and that is where price differences between quotes tend to hide. Ask each firm for its cabinet allowance and its stone allowance, and compare those before you compare the headline number.</div>
               </details>
               <details class="faq-item" open>
                 <summary class="faq-question" tabindex="-1">Is $30,000 enough for a kitchen remodel in Naples?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
-                <div class="faq-answer">For a cabinet refacing, new quartz counters, a backsplash and lighting in the existing layout, often yes. For a full gut with new custom cabinets and a layout change, it is below where most Naples projects land. The honest way to find out is a measured plan: the allowances show exactly where $30,000 goes and what has to give. A common choice is to keep the layout and spend on cabinets and stone, which is where the kitchen is actually felt.</div>
+                <div class="faq-answer">For a cabinet refacing, new quartz counters, a backsplash and lighting in the existing layout, often yes. For a full gut with new custom cabinets and a layout change, it is below where most Naples projects land. A written quote for your own kitchen shows where $30,000 goes and what has to give. A common choice is to keep the layout and spend on cabinets and stone.</div>
               </details>
               <details class="faq-item" open>
                 <summary class="faq-question" tabindex="-1">Should I reface my existing cabinets or replace them?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
@@ -5003,11 +5044,11 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
             <div class="faq-accordion">
               <details class="faq-item" open>
                 <summary class="faq-question" tabindex="-1">How long does a kitchen remodel take from design to finished kitchen?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
-                <div class="faq-answer">Plan on roughly two to six weeks for the plan, scope and selections, a few weeks for permits or association approval, and about 2 to 3 weeks on site for a refresh, 4 to 6 weeks for a mid-tier remodel and 8 to 12 weeks for a full gut. Cabinet lead time runs in the background during selections and permitting. The schedule names the demolition, cabinet, stone and finish weeks before work starts, so the planned finish is a stated week you can check progress against.</div>
+                <div class="faq-answer">Plan on roughly two to six weeks for the plan, scope and selections, a few weeks for permits or association approval, and about 2 to 3 weeks on site for a refresh, 4 to 6 weeks for a mid-tier remodel and 8 to 12 weeks for a full gut. Cabinet lead time runs in the background during selections and permitting. A written schedule comes with the scope.</div>
               </details>
               <details class="faq-item" open>
                 <summary class="faq-question" tabindex="-1">What happens if a cabinet or stone delivery is late?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
-                <div class="faq-answer">You hear about it first, before the crew would have shown up, and the schedule is re-issued with the new week. Cabinets are ordered early enough that a small slip does not move the rough-in or the inspections, and stone is not templated until cabinets are set, so a late cabinet delivery shifts the stone week rather than wasting a template. The written schedule shows every week that changed and why.</div>
+                <div class="faq-answer">We tell you and re-issue the schedule. Cabinets are ordered early enough that a small slip does not move the rough-in or the inspections, and stone is not templated until cabinets are set, so a late cabinet delivery shifts the stone work rather than wasting a template.</div>
               </details>
               <details class="faq-item" open>
                 <summary class="faq-question" tabindex="-1">Can I stay in my Naples home during the remodel?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
@@ -5015,7 +5056,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
               </details>
               <details class="faq-item" open>
                 <summary class="faq-question" tabindex="-1">What does the first consultation involve?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
-                <div class="faq-answer">A visit to the kitchen, a full measure of the room, a look at the plumbing and the electrical panel, and a conversation about how you cook and what you want changed. You leave with a sense of what is possible in the layout and what the market ranges look like. The consultation itself carries no obligation. If you decide to go ahead, the measured plan and the written scope are the first things the project produces.</div>
+                <div class="faq-answer">A visit to the kitchen, a full measure of the room, a look at the plumbing and the electrical panel, and a conversation about how you cook and what you want changed. By the end you have a sense of what is possible in the layout and what the market ranges look like. The consultation carries no obligation. If you decide to go ahead, the project starts with a drawn plan of the room.</div>
               </details>
             </div>
           </div>
@@ -5025,7 +5066,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
             <div class="faq-accordion">
               <details class="faq-item" open>
                 <summary class="faq-question" tabindex="-1">Do I need a permit from Collier County to remodel my kitchen?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
-                <div class="faq-answer">Yes if the project alters or replaces electrical, gas, mechanical or plumbing systems, removes a wall, or moves a window; no if it only replaces cabinets, counters, flooring, paint and appliances in the same spots. Collier County permits are filed through the Growth Management Department on North Horseshoe Drive, and inside the city limits the City of Naples building department handles them. The permit is filed as part of the job and listed on the scope.</div>
+                <div class="faq-answer">Yes if the project alters or replaces electrical, gas, mechanical or plumbing systems, removes a wall, or moves a window; usually no if it only replaces cabinets, counters, flooring, paint and appliances in the same spots. Collier County permits are filed through the Growth Management Department on North Horseshoe Drive, and inside the city limits the City of Naples building department handles them. The permit is filed as part of the job and listed on the scope.</div>
               </details>
               <details class="faq-item" open>
                 <summary class="faq-question" tabindex="-1">Can I remodel the kitchen in my condo, and do I need HOA approval first?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
@@ -5051,7 +5092,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
               </details>
               <details class="faq-item" open>
                 <summary class="faq-question" tabindex="-1">Which areas around Naples do you serve?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
-                <div class="faq-answer">Naples, Marco Island, Bonita Springs, Estero and Golden Gate, which covers roughly a 25 mile radius across Collier and south Lee County. Houses, condos and gated-community villas are all within scope. If you are just outside that circle, ask; the answer depends on the project rather than the map.</div>
+                <div class="faq-answer">Naples, Marco Island, Bonita Springs, Estero and Golden Gate, which covers roughly a 25 mile radius across Collier and south Lee County. Houses, condos and gated-community villas are all within scope. If you are just outside that area, ask.</div>
               </details>
               <details class="faq-item" open>
                 <summary class="faq-question" tabindex="-1">Do you work in gated communities in Naples and Estero?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
@@ -5068,8 +5109,8 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
   <!-- ── CTA Band ───────────────────────────────────────────────────────── -->
   <section id="cta-band" aria-labelledby="cta-heading" style="--cta-photo:url('/images/cta_bg.webp')">
     <div class="container">
-      <h2 id="cta-heading">Ready to See Your Kitchen Measured and Planned?</h2>
-      <p>Request a no-obligation consultation. We will measure the room and talk through layout and materials, and if you go ahead, the project starts with a drawn plan, a written scope and a schedule in weeks.</p>
+      <h2 id="cta-heading">Thinking About a New Kitchen in Naples?</h2>
+      <p>Call or send the form to set up a no-obligation consultation. We come out, measure the room and talk through layout, cabinets and stone with you, and you decide from there whether to go ahead.</p>
       <a href="/contact/" class="cta-band-btn">Request a Consultation</a>
     </div>
   </section>
@@ -5086,7 +5127,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       "name": "How much does a kitchen remodel cost in Naples, FL?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Local cost guides put most Naples full kitchen remodels roughly between $30,000 and $80,000, with refreshes such as refacing and new counters running about $15,000 to $30,000, and Florida per-square-foot figures landing around $100 to $350. Where a project falls depends on cabinet grade, stone and how much plumbing or electrical moves. Those are market observations. A measured plan with a written scope gives the real number for your kitchen."
+        "text": "Full kitchen remodels in Naples typically run about $30,000 to $80,000 according to local cost guides, with refreshes such as refacing and new counters typically about $15,000 to $30,000, and Florida per-square-foot figures landing around $100 to $350. Where a project falls depends on cabinet grade, stone and how much plumbing or electrical moves. Those are market observations. A written quote for your own kitchen starts with a consultation."
       }
     },
     {
@@ -5094,7 +5135,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       "name": "What should a kitchen remodel quote include so I can compare contractors?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A drawn plan to scale, a scope that lists every item with its allowance, a schedule in weeks, the permit scope, and the workmanship terms in writing. If a quote gives one number with no allowances, you cannot tell what cabinet grade or stone it assumes, and that is where price differences between quotes tend to hide. Ask each firm for its cabinet allowance, its stone allowance and the week stone installs. Compare those, not the headline number."
+        "text": "A drawn plan to scale, a scope that lists every item with its allowance, a written schedule, the permit scope, and the workmanship terms in writing. If a quote gives one number with no allowances, you cannot tell what cabinet grade or stone it assumes, and that is where price differences between quotes tend to hide. Ask each firm for its cabinet allowance and its stone allowance, and compare those before you compare the headline number."
       }
     },
     {
@@ -5102,7 +5143,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       "name": "Is $30,000 enough for a kitchen remodel in Naples?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "For a cabinet refacing, new quartz counters, a backsplash and lighting in the existing layout, often yes. For a full gut with new custom cabinets and a layout change, it is below where most Naples projects land. The honest way to find out is a measured plan: the allowances show exactly where $30,000 goes and what has to give. A common choice is to keep the layout and spend on cabinets and stone, which is where the kitchen is actually felt."
+        "text": "For a cabinet refacing, new quartz counters, a backsplash and lighting in the existing layout, often yes. For a full gut with new custom cabinets and a layout change, it is below where most Naples projects land. A written quote for your own kitchen shows where $30,000 goes and what has to give. A common choice is to keep the layout and spend on cabinets and stone."
       }
     },
     {
@@ -5118,7 +5159,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       "name": "How long does a kitchen remodel take from design to finished kitchen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Plan on roughly two to six weeks for the plan, scope and selections, a few weeks for permits or association approval, and about 2 to 3 weeks on site for a refresh, 4 to 6 weeks for a mid-tier remodel and 8 to 12 weeks for a full gut. Cabinet lead time runs in the background during selections and permitting. The schedule names the demolition, cabinet, stone and finish weeks before work starts, so the planned finish is a stated week you can check progress against."
+        "text": "Plan on roughly two to six weeks for the plan, scope and selections, a few weeks for permits or association approval, and about 2 to 3 weeks on site for a refresh, 4 to 6 weeks for a mid-tier remodel and 8 to 12 weeks for a full gut. Cabinet lead time runs in the background during selections and permitting. A written schedule comes with the scope."
       }
     },
     {
@@ -5126,7 +5167,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       "name": "What happens if a cabinet or stone delivery is late?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You hear about it first, before the crew would have shown up, and the schedule is re-issued with the new week. Cabinets are ordered early enough that a small slip does not move the rough-in or the inspections, and stone is not templated until cabinets are set, so a late cabinet delivery shifts the stone week rather than wasting a template. The written schedule shows every week that changed and why."
+        "text": "We tell you and re-issue the schedule. Cabinets are ordered early enough that a small slip does not move the rough-in or the inspections, and stone is not templated until cabinets are set, so a late cabinet delivery shifts the stone work rather than wasting a template."
       }
     },
     {
@@ -5142,7 +5183,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       "name": "What does the first consultation involve?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A visit to the kitchen, a full measure of the room, a look at the plumbing and the electrical panel, and a conversation about how you cook and what you want changed. You leave with a sense of what is possible in the layout and what the market ranges look like. The consultation itself carries no obligation. If you decide to go ahead, the measured plan and the written scope are the first things the project produces."
+        "text": "A visit to the kitchen, a full measure of the room, a look at the plumbing and the electrical panel, and a conversation about how you cook and what you want changed. By the end you have a sense of what is possible in the layout and what the market ranges look like. The consultation carries no obligation. If you decide to go ahead, the project starts with a drawn plan of the room."
       }
     },
     {
@@ -5150,7 +5191,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       "name": "Do I need a permit from Collier County to remodel my kitchen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes if the project alters or replaces electrical, gas, mechanical or plumbing systems, removes a wall, or moves a window; no if it only replaces cabinets, counters, flooring, paint and appliances in the same spots. Collier County permits are filed through the Growth Management Department on North Horseshoe Drive, and inside the city limits the City of Naples building department handles them. The permit is filed as part of the job and listed on the scope."
+        "text": "Yes if the project alters or replaces electrical, gas, mechanical or plumbing systems, removes a wall, or moves a window; usually no if it only replaces cabinets, counters, flooring, paint and appliances in the same spots. Collier County permits are filed through the Growth Management Department on North Horseshoe Drive, and inside the city limits the City of Naples building department handles them. The permit is filed as part of the job and listed on the scope."
       }
     },
     {
@@ -5190,7 +5231,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       "name": "Which areas around Naples do you serve?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Naples, Marco Island, Bonita Springs, Estero and Golden Gate, which covers roughly a 25 mile radius across Collier and south Lee County. Houses, condos and gated-community villas are all within scope. If you are just outside that circle, ask; the answer depends on the project rather than the map."
+        "text": "Naples, Marco Island, Bonita Springs, Estero and Golden Gate, which covers roughly a 25 mile radius across Collier and south Lee County. Houses, condos and gated-community villas are all within scope. If you are just outside that area, ask."
       }
     },
     {
@@ -5207,7 +5248,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
 
 <footer id="site-footer" role="contentinfo" class="footer-variant-light-minimal">
   <div class="footer-top"><div class="container"><div class="footer-grid">
-    <div class="footer-col"><h4><a href="/" class="footer-brand-link">Naples Kitchen Remodelers</a></h4><p>Design-build kitchen remodeling for Naples, Marco Island, Bonita Springs, Estero and Golden Gate. Measured plans, written scopes and schedules stated in weeks, including condo and HOA projects managed while you are away.</p><address class="footer-nap" style="font-style:normal;"><span>Naples, Florida</span><br><a href="tel:+12395550100" style="color:rgba(255,255,255,0.65);">+1 (239) 555-0100</a></address></div>
+    <div class="footer-col"><h4><a href="/" class="footer-brand-link">Naples Kitchen Remodelers</a></h4><p>Kitchen remodeling for houses and condos in Naples, Marco Island, Bonita Springs, Estero and Golden Gate, from cabinets and countertops to full remodels.</p><address class="footer-nap" style="font-style:normal;"><span>Naples, Florida</span><br><a href="tel:+12395550100" style="color:rgba(255,255,255,0.65);">+1 (239) 555-0100</a></address></div>
     <div class="footer-col"><h4>Services</h4><ul>
             <li><a href="/services/full-kitchen-remodels/">Full Kitchen Remodels</a></li>
             <li><a href="/services/custom-cabinets-and-refacing/">Custom Cabinets and Refacing</a></li>
@@ -5215,14 +5256,14 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
             <li><a href="/services/condo-and-hoa-kitchen-remodels/">Condo and HOA Kitchen Remodels</a></li>
             <li><a href="/services/kitchen-and-bath-remodeling/">Kitchen and Bath Remodeling</a></li>
 </ul></div>
-    <div class="footer-col"><h4>Inquiry</h4><ul><li><a href="/contact/">Request Quote</a></li><li><a href="/about/">About Us</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/blog/">Blog</a></li><li><a href="/cost-guides/kitchen-remodel-cost-naples-fl/">Price Guide</a></li><li><a href="/privacy/">Privacy Policy</a></li><li><a href="/terms/">Terms of Service</a></li></ul></div>
+    <div class="footer-col"><h4>Inquiry</h4><ul><li><a href="/contact/">Request a Consultation</a></li><li><a href="/about/">About Us</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/blog/">Blog</a></li><li><a href="/cost-guides/kitchen-remodel-cost-naples-fl/">Price Guide</a></li><li><a href="/privacy/">Privacy Policy</a></li><li><a href="/terms/">Terms of Service</a></li></ul></div>
     <div class="footer-col"><h4>Serving Southwest Florida</h4><ul><li><a href="/">Naples</a></li><li><a href="/areas/marco-island/">Marco Island</a></li><li><a href="/areas/bonita-springs/">Bonita Springs</a></li><li><a href="/areas/estero/">Estero</a></li><li><a href="/areas/golden-gate/">Golden Gate</a></li></ul></div>
   </div></div></div>
   <div class="container"><p class="footer-disclaimer">This site is a free service to assist homeowners in connecting with local service contractors. All contractors are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on this site.</p></div>
   <div class="container"><div class="footer-bottom"><span>© 2026 Naples Kitchen Remodelers. All rights reserved.</span><span>Naples, Florida, United States</span></div></div>
 </footer>
 
-<a id="mobile-cta" href="tel:+12395550100" aria-label="Call us now"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call Us — +1 (239) 555-0100</a>
+<a id="mobile-cta" href="tel:+12395550100" aria-label="Call us now"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call Us: +1 (239) 555-0100</a>
 
 <script>
   function toggleMenu(btn){var m=document.getElementById('mobile-nav');m.classList.toggle('open');btn.setAttribute('aria-expanded',String(m.classList.contains('open')));}

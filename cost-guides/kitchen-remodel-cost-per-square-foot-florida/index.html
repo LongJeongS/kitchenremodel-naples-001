@@ -7,11 +7,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Mulish:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4d43c123">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kitchen Remodel Cost Per Square Foot Florida | 2026 Guide</title>
+  <title>Kitchen Remodel Cost Per Square Foot Florida | Naples Kitchen Remodelers</title>
   <meta name="description" content="Florida kitchen remodels run $100 to $350 per square foot in 2026, swinging with cabinet grade and layout changes. How to calculate it and when to ignore it.">
   <link rel="canonical" href="https://kitchenremodel-naples-001.pages.dev/cost-guides/kitchen-remodel-cost-per-square-foot-florida/">
   <!-- Open Graph -->
-  <meta property="og:title" content="Kitchen Remodel Cost Per Square Foot Florida | 2026 Guide">
+  <meta property="og:title" content="Kitchen Remodel Cost Per Square Foot Florida | Naples Kitchen Remodelers">
   <meta property="og:description" content="Florida kitchen remodels run $100 to $350 per square foot in 2026, swinging with cabinet grade and layout changes. How to calculate it and when to ignore it.">
   <meta property="og:url" content="https://kitchenremodel-naples-001.pages.dev/cost-guides/kitchen-remodel-cost-per-square-foot-florida/">
   <meta property="og:image" content="https://kitchenremodel-naples-001.pages.dev/images/hero_bg.webp">
@@ -83,7 +83,7 @@
       "name": "Why is a small kitchen more expensive per square foot?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Because the fixed costs do not shrink with the room. Permits, demolition, the trade minimums, the countertop install trip and the appliances cost about the same in a 90-square-foot galley as in a 250-square-foot kitchen, so spread over fewer square feet they raise the rate. A galley also carries more cabinet per square foot of floor. The total is lower; the per-square-foot figure is higher."
+        "text": "Because the fixed costs do not shrink with the room. Permits, demolition, the trade minimums, the countertop install trip and the appliances cost about the same in a 90-square-foot galley as in a 250-square-foot kitchen, so spread over fewer square feet they raise the rate. A galley also carries more cabinet per square foot of floor. So a small kitchen costs less in total and more per square foot."
       }
     },
     {
@@ -115,7 +115,7 @@
       "name": "Is cost per square foot higher in Naples than the rest of Florida?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Generally toward the upper half of the state range, based on local 2026 guides. Naples finishes tend to run to semi-custom and custom cabinetry with quartzite or quartz, condo and coastal addresses add access and delivery time, and the January through April season tightens trade calendars. The range itself is the same; where Naples kitchens land within it is higher."
+        "text": "Generally toward the upper half of the state range, based on local 2026 guides. Naples finishes tend to run to semi-custom and custom cabinetry with quartzite or quartz, condo and coastal addresses add access and delivery time, and the January through April season tightens trade calendars."
       }
     }
   ]
@@ -152,7 +152,7 @@
 }
 
 /* ── DESIGN VARIETY: section pattern backgrounds ───────────────────────────────
-   One of these classes is applied to <body> via look-plain stats-brand-band order-proof-first. Patterns
+   One of these classes is applied to <body> via look-plain stats-brand-band order-proof-first stats-figure-plain heading-face-small. Patterns
    are subtle by design and applied to alternating sections to avoid visual
    noise. Stage 1 design_context.pattern_style selects which one. */
 
@@ -4947,6 +4947,47 @@ body.look-plain .cg-more-list li { border-bottom: 1px solid var(--border); }
 body.look-plain .cg-more-list a { display: block; padding: 14px 0; font-size: 17px; font-weight: 600; color: var(--color-primary); }
 body.look-plain .cg-more-list a:hover { text-decoration: underline; }
 /* review-round-nov-2026:end */
+/* legibility-nov-2026:start */
+/* Legibility fixes 2026-11-27, from what tools/legibility_check.py measured on the first plain sites. One marked chunk
+   so older tests can compare "today minus these fixes" (tests/legibility_round.py); every rule is scoped to the plain look.
+   Numbers band: where the brand accent is under 3:1 on the brand colour the assembler adds stats-figure-plain and the
+   figures are white (Naples coral on green measured 2.3:1). A readable accent keeps its colour. */
+body.look-plain.stats-brand-band.stats-figure-plain #stats-bar .stat-value { color: #fff; }
+/* Call-to-action band: the paragraph sits inside .cta-band-inner, so the rule above for "#cta-band > .container > p"
+   never reached it and it stayed at the classic 75% white (4.1 to 4.4:1 over the tinted photo). This is the intended 92%. */
+body.look-plain #cta-band .cta-band-sub { color: rgba(255,255,255,0.92); }
+/* Blog post top section: the breadcrumb and the date line are full white, and a dark scrim sits behind the text block
+   (it fades in over the block's top padding), so a pale photo cannot wash them out: 30% black keeps white text at 4.5:1 or better even where the photo is pure
+   white over these brand colours. The photo keeps its 45%. */
+body.look-plain .post-hero-overlay { background-image: linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.3) 100%); }
+body.look-plain .post-breadcrumb, body.look-plain .post-breadcrumb a, body.look-plain .post-meta { color: #fff; }
+/* Photo service cards (photo_overlay): the dark fade hangs from the card title, so however long the card's text is the
+   title and the text sit on it. It replaces the fade that was fixed at 20% to 72% of the card's height (a long text
+   pushed the title up into its light part: 2.7:1 on a pale photo). The icon tile stays above it. */
+body.look-plain #services.services-variant-photo-overlay .svc-photo::after { background: rgba(10,22,30,0.05); }
+body.look-plain #services.services-variant-photo-overlay .service-card h3::before { content: ""; position: absolute; z-index: -1; left: -22px; right: -22px; top: -110px; height: 1200px; pointer-events: none; background: linear-gradient(180deg, rgba(10,22,30,0) 0, rgba(10,22,30,0.5) 110px, rgba(10,22,30,0.88) 180px); }
+body.look-plain #services.services-variant-photo-overlay .service-icon { z-index: 2; }
+/* Heading faces that are hard to read small (config/font_traits.json: small-bodied like Cormorant Garamond, whose 17px
+   reads like 12.8px, or condensed like Bebas Neue): the assembler adds heading-face-small and the headings of 18px and
+   under, the contents and sidebar titles, the footer brand name and the logo kicker are set in the body font, bold.
+   Larger headings keep the heading face. */
+body.look-plain.heading-face-small #services:not(.services-variant-photo-overlay) .service-card h3, body.look-plain.heading-face-small .area-service-card h3, body.look-plain.heading-face-small .vp-text h3, body.look-plain.heading-face-small .vp-text h4, body.look-plain.heading-face-small .vp-card h3, body.look-plain.heading-face-small .process-step h3, body.look-plain.heading-face-small .application-item h3, body.look-plain.heading-face-small .related-card h3, body.look-plain.heading-face-small .cg-faq-item h3, body.look-plain.heading-face-small .blog-card-title, body.look-plain.heading-face-small .contact-info-header h2, body.look-plain.heading-face-small .sidebar-card h3, body.look-plain.heading-face-small .cg-toc-title, body.look-plain.heading-face-small #site-footer .footer-brand-link, body.look-plain.heading-face-small #site-nav .nav-logo .nav-logo-kicker { font-family: var(--font-body); font-weight: 700; }
+/* Footer disclaimer: 14px on both footers (it was 13.5px, and 13px on the light footer: one paragraph on every page,
+   which alone put 7 to 9% of a referral site's characters under 14px). */
+body.look-plain .footer-disclaimer, body.look-plain #site-footer.footer-variant-light-minimal .footer-disclaimer { font-size: 14px; }
+/* Blog pages toggle `is-open` (templates/blog-*.html); open the menu and the dropdown on it too. */
+body.look-plain .nav-mobile-menu.is-open { display: flex; }
+body.look-plain .nav-dropdown.is-open .nav-dropdown-menu { opacity: 1; pointer-events: auto; transform: translateY(0); visibility: visible; }
+/* legibility-nov-2026:end */
+/* template-round-nov-2026:start */
+/* ── Template round 2026-11-27 (tests/test_plain_template_round.py; the start and end markers let older tests set this
+   chunk aside: tests/template_round.py) ── */
+/* The open phone menu sits inside the fixed top bar, so a menu taller than the screen was cut off with no way to reach
+   its last links and button (Naples, Bakersfield on a 390x667 phone). It now scrolls inside what is left of the screen
+   under the bar (and the strip, where a site shows one), on every top bar and on the blog pages, whose script opens it
+   with `is-open`. The dynamic viewport height keeps the last button above a phone browser's toolbar. */
+body.look-plain #site-nav .nav-mobile-menu.open, body.look-plain #site-nav .nav-mobile-menu.is-open { max-height: calc(100vh - var(--plain-bar-h) - var(--plain-strip-h)); max-height: calc(100dvh - var(--plain-bar-h) - var(--plain-strip-h)); overflow-y: auto; overscroll-behavior: contain; }
+/* template-round-nov-2026:end */
 /* === hero-photo-beside === */
 /* Top section: photo_beside (the one light top section: the photo at full brightness with no tint on the left, 55% of the width;
    headline, text and buttons in dark ink on the page background beside it; on phones the photo comes first and the text follows).
@@ -5089,7 +5130,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
   </style>
   
 </head>
-<body class="look-plain stats-brand-band order-proof-first">
+<body class="look-plain stats-brand-band order-proof-first stats-figure-plain heading-face-small">
   
 
 <header id="site-nav" role="banner" class="nav-variant-split-centered-logo">
@@ -5117,7 +5158,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       </ul>
       <div class="nav-actions">
         <a href="tel:+12395550100" class="nav-phone" aria-label="Call us"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+1 (239) 555-0100</a>
-        <a href="/contact/" class="btn btn-primary">Start With a Plan</a>
+        <a href="/contact/" class="btn btn-primary">Request a Consultation</a>
       </div>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
     </nav>
@@ -5134,7 +5175,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
     <a href="/cost-guides/kitchen-remodel-cost-naples-fl/" onclick="closeMenu()">Price Guide</a>
     <a href="/contact/" onclick="closeMenu()">Contact</a>
     <a href="tel:+12395550100" onclick="closeMenu()" style="display:flex;align-items:center;gap:8px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+1 (239) 555-0100</a>
-    <a href="/contact/" class="btn btn-primary mobile-cta" onclick="closeMenu()">Start With a Plan</a>
+    <a href="/contact/" class="btn btn-primary mobile-cta" onclick="closeMenu()">Request a Consultation</a>
   </nav>
 </header>
 
@@ -5195,7 +5236,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       <span class="section-eyebrow">What Drives the Price</span>
       <h2 class="section-heading">Cost Factors</h2>
       <div class="factors-grid">
-        <div class="factor-item"><div class="factor-title">How the Figure Is Built</div><p class="factor-body">A per-square-foot rate is the total project cost, labor, materials, permits and all, divided by the floor area of the kitchen. It was never a unit price for anything in particular.</p></div><div class="factor-item"><div class="factor-title">Fixed Costs That Do Not Shrink With the Room</div><p class="factor-body">Permits and inspections at roughly $500 to $2,500, demolition and disposal, the plumber's and electrician's minimum visits, and the appliance package cost about the same in a 100-square-foot galley as in a 250-square-foot open kitchen. Spread over fewer square feet, they push a small kitchen's rate up sharply.</p></div><div class="factor-item"><div class="factor-title">Cabinet Linear Feet Versus Floor Square Feet</div><p class="factor-body">Cabinets are priced by the linear foot, about $200 to $600 installed in Florida guides depending on grade, and the relationship between cabinet runs and floor area is loose. A galley with cabinets on both walls carries more cabinetry per square foot of floor than an open kitchen with one wall and an island, so two kitchens of equal floor area can differ by $10,000 in cabinets alone.</p></div><div class="factor-item"><div class="factor-title">Countertop Area and Material</div><p class="factor-body">Countertops are priced by their own square footage, roughly $40 to $150 per square foot installed across laminate, granite, quartz and quartzite in Florida guides. An island adds counter area without adding much floor area, and a waterfall edge adds a full slab.</p></div><div class="factor-item"><div class="factor-title">Layout Changes and Slab Work</div><p class="factor-body">Relocating a sink, range or refrigerator means new drain and supply lines and new circuits, which Florida guides put at about $2,000 to $6,000 for the trade work alone. Most Florida homes sit on a concrete slab, so a moved drain means a saw cut and a patch.</p></div><div class="factor-item"><div class="factor-title">Florida Building Conditions</div><p class="factor-body">Several costs show up in Florida more than elsewhere and sit outside the square-foot figure. Homes in mapped flood zones can face limits on improvement value before elevation rules apply, new window openings must meet the Florida wind code, condo associations set work hours and deposits, and coastal humidity argues for factory finishes and hardware made for it.</p></div><div class="factor-item"><div class="factor-title">Where in Florida the Kitchen Is</div><p class="factor-body">Published 2026 ranges run about $100 to $300 per square foot in a Fort Myers guide and $150 to $350 in a Sarasota guide, with Naples finishes tending toward the upper half of either. Coastal and barrier-island addresses add delivery time and elevator logistics, and seasonal demand from January through April tightens trade and inspection calendars across Southwest Florida.</p></div>
+        <div class="factor-item"><div class="factor-title">How the Figure Is Built</div><p class="factor-body">A per-square-foot rate is the total project cost, labor, materials, permits and all, divided by the floor area of the kitchen. No single item in the kitchen is priced that way.</p></div><div class="factor-item"><div class="factor-title">Fixed Costs That Do Not Shrink With the Room</div><p class="factor-body">Permits and inspections at roughly $500 to $2,500, demolition and disposal, the plumber's and electrician's minimum visits, and the appliance package cost about the same in a 100-square-foot galley as in a 250-square-foot open kitchen. Spread over fewer square feet, they push a small kitchen's rate up sharply.</p></div><div class="factor-item"><div class="factor-title">Cabinet Linear Feet Versus Floor Square Feet</div><p class="factor-body">Cabinets are priced by the linear foot, about $200 to $600 installed in Florida guides depending on grade, and the relationship between cabinet runs and floor area is loose. A galley with cabinets on both walls carries more cabinetry per square foot of floor than an open kitchen with one wall and an island, so two kitchens of equal floor area can differ by $10,000 in cabinets alone.</p></div><div class="factor-item"><div class="factor-title">Countertop Area and Material</div><p class="factor-body">Countertops are priced by their own square footage, roughly $40 to $150 per square foot installed across laminate, granite, quartz and quartzite in Florida guides. An island adds counter area without adding much floor area, and a waterfall edge adds a full slab.</p></div><div class="factor-item"><div class="factor-title">Layout Changes and Slab Work</div><p class="factor-body">Relocating a sink, range or refrigerator means new drain and supply lines and new circuits, which Florida guides put at about $2,000 to $6,000 for the trade work alone. Most Florida homes sit on a concrete slab, so a moved drain means a saw cut and a patch.</p></div><div class="factor-item"><div class="factor-title">Florida Building Conditions</div><p class="factor-body">Several costs show up in Florida more than elsewhere and sit outside the square-foot figure. Homes in mapped flood zones can face limits on improvement value before elevation rules apply, new window openings must meet the Florida wind code, condo associations set work hours and deposits, and coastal humidity argues for factory finishes and hardware made for it.</p></div><div class="factor-item"><div class="factor-title">Where in Florida the Kitchen Is</div><p class="factor-body">Published 2026 ranges run about $100 to $300 per square foot in a Fort Myers guide and $150 to $350 in a Sarasota guide, with Naples finishes tending toward the upper half of either. Coastal and barrier-island addresses add delivery time and elevator logistics, and seasonal demand from January through April tightens trade and inspection calendars across Southwest Florida.</p></div>
       </div>
     </div>
   </section>
@@ -5231,7 +5272,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
 <p>The practical use is as a check, after the fact. When a written quote arrives, divide it by your floor area. If it lands near $350 for a kept-layout refresh or near $100 for a full gut remodel with custom cabinets, something in the scope is missing or misread, and that is the question to ask before signing.</p></div><div class="cg-section" id="why-the-per-square-foot-number-misleads-for-small-kitchens-a"><h2>Why the Per-Square-Foot Number Misleads for Small Kitchens and Condos</h2><p>Small kitchens are where the square-foot figure fails hardest, and the reason is the fixed cost floor. Permits, demolition and disposal, the trade minimums, the countertop template and install trip and the appliance package come to roughly the same dollars whether the room is 90 square feet or 250. In a 90-square-foot condo galley those items alone can represent $150 per square foot before a single cabinet is counted. Add cabinets, which in a galley line both walls, and a modest condo kitchen with semi-custom boxes and quartz can post a rate near the top of the Florida range while costing far less in total than a house kitchen at the bottom of it.</p>
 <p>Condo buildings add a second layer. Association approval packets, deposits, elevator reservations for each delivery, hallway floor protection and work hours that end mid-afternoon all add labor hours without adding square feet. Shared plumbing stacks usually rule out moving the sink, which keeps the total down but does nothing for the rate.</p>
 <p>The better read for a small kitchen is a per-project range by tier: a refresh at about $15,000 to $30,000, a mid-tier remodel at $35,000 to $60,000 and a full gut remodel from $65,000 upward in local 2026 guides. Our page on <a href="/services/custom-cabinets-and-refacing/">cabinet refacing and new cabinetry</a> walks through the choice that most often decides which tier a small kitchen lands in.</p></div><div class="cg-section" id="florida-specific-costs-the-square-foot-figure-hides"><h2>Florida-Specific Costs the Square-Foot Figure Hides</h2><p>A per-square-foot number imported from a national guide misses several items that show up in Florida kitchens often enough to plan for.</p>
-<p>Permits are scoped by the trade work, not the floor area. In Collier County, building and trade permit fees follow the county's adopted <a href="https://www.collier.gov/files/assets/county/v/2/planning-and-zoning/documents/fee-schedule.pdf">permit fee schedule</a>, and a kitchen that adds circuits, relocates plumbing or removes a wall needs the matching permits and inspections, while a like-for-like cabinet and counter swap often does not. Local guides place the permit line at about $500 to $2,500.</p>
+<p>Permits are scoped by the trade work involved. In Collier County, building and trade permit fees follow the county's adopted <a href="https://www.collier.gov/files/assets/county/v/2/planning-and-zoning/documents/fee-schedule.pdf">permit fee schedule</a>, and a kitchen that adds circuits, relocates plumbing or removes a wall needs the matching permits and inspections, while a like-for-like cabinet and counter swap often does not. Local guides place the permit line at about $500 to $2,500.</p>
 <p>Flood zones and wind code are planning items. Homes in mapped flood zones may face a cap on improvement spending relative to the home's value before elevation rules apply, and a new or enlarged window opening above the sink must meet the Florida wind code. Both are confirmed from the plan, which is why a remodel that opens a wall or adds a window is estimated differently from one that does not.</p>
 <p>Humidity and salt air argue for finishes made for them: factory-applied cabinet finishes, coated hardware and stone that is sealed on a schedule. The <a href="https://www.naturalstoneinstitute.org/consumers/">Natural Stone Institute</a> publishes care and cleaning guidance that applies directly to quartzite and marble in a Gulf Coast kitchen.</p></div><div class="cg-section" id="a-better-way-to-budget-price-the-three-big-decisions-then-di"><h2>A Better Way to Budget: Price the Three Big Decisions, Then Divide</h2><p>In a Florida kitchen the budget itself comes from three decisions, and the square-foot figure checks the result.</p>
 <p>The first is cabinetry: whether the boxes stay and are refaced, are replaced with a semi-custom line or are built custom, and in what construction and finish. Florida guides price this at about $200 to $600 per linear foot installed, and in most kitchens it is 30 to 40 percent of the total.</p>
@@ -5254,7 +5295,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       <span class="section-eyebrow">Frequently Asked</span>
       <h2 class="section-heading">Cost Guide FAQ</h2>
       <div class="cg-faq-list">
-        <div class="cg-faq-item"><h3>What is the average kitchen remodel cost per square foot in Florida?</h3><p>About $100 to $350 per square foot of kitchen floor in 2026, based on guides from Fort Myers, Sarasota and Tampa-area contractors. The low end covers refreshes with refaced cabinets and new counters; the high end covers full gut remodels with custom cabinetry and a moved layout.</p></div><div class="cg-faq-item"><h3>How do I calculate the cost per square foot for my kitchen remodel?</h3><p>Divide the total project cost by the floor area of the kitchen, measured wall to wall and including the island footprint. A $45,000 project in a 150-square-foot kitchen is $300 per square foot. Run it on a written quote as a sanity check; running it in reverse to set a budget tends to understate small kitchens and overstate large ones.</p></div><div class="cg-faq-item"><h3>Is $10,000 enough to renovate a kitchen in Florida?</h3><p>Only for a limited refresh. At $10,000 Florida guides describe repainted or refaced cabinet fronts, new hardware, lighting and perhaps a laminate or entry-level counter, with the layout and appliances kept. New cabinets, quartz counters or any plumbing or electrical relocation push the total well past that, and in Naples most refreshes start closer to $15,000.</p></div><div class="cg-faq-item"><h3>What is the 30 percent rule in remodeling?</h3><p>It is a budgeting guideline, used two ways, rather than a building rule. Some guides use it to mean total renovation spending should stay under about 30 percent of the home's value; others use it to mean holding back a cushion against surprises. For a kitchen, local Florida guides suggest a 10 to 15 percent contingency, and a kitchen alone rarely approaches 30 percent of a Naples home's value.</p></div><div class="cg-faq-item"><h3>Why is a small kitchen more expensive per square foot?</h3><p>Because the fixed costs do not shrink with the room. Permits, demolition, the trade minimums, the countertop install trip and the appliances cost about the same in a 90-square-foot galley as in a 250-square-foot kitchen, so spread over fewer square feet they raise the rate. A galley also carries more cabinet per square foot of floor. The total is lower; the per-square-foot figure is higher.</p></div><div class="cg-faq-item"><h3>How much do kitchen cabinets cost per linear foot in Florida?</h3><p>Roughly $200 to $600 per linear foot installed in 2026 Florida guides, from stock boxes at the low end to custom white oak or painted maple at the top. Semi-custom lines sit in the middle. Construction details such as plywood boxes, soft-close hardware and finished interiors move the figure within that range.</p></div><div class="cg-faq-item"><h3>How much do countertops cost per square foot in Florida?</h3><p>About $40 to $150 per square foot installed, across laminate, granite, quartz and quartzite, according to Florida guides. The slab count and the number of seams matter as much as the material, and an island or a waterfall edge adds a slab. Quartzite and marble generally sit at the upper end, quartz in the middle.</p></div><div class="cg-faq-item"><h3>Does cost per square foot include appliances and permits?</h3><p>In most published Florida figures, yes, which is part of why the range is so wide. The rate is the whole project cost divided by the floor area, so appliances, permits, demolition and labor are all inside it. Always ask which items a quoted figure includes before comparing it with another.</p></div><div class="cg-faq-item"><h3>Is cost per square foot higher in Naples than the rest of Florida?</h3><p>Generally toward the upper half of the state range, based on local 2026 guides. Naples finishes tend to run to semi-custom and custom cabinetry with quartzite or quartz, condo and coastal addresses add access and delivery time, and the January through April season tightens trade calendars. The range itself is the same; where Naples kitchens land within it is higher.</p></div>
+        <div class="cg-faq-item"><h3>What is the average kitchen remodel cost per square foot in Florida?</h3><p>About $100 to $350 per square foot of kitchen floor in 2026, based on guides from Fort Myers, Sarasota and Tampa-area contractors. The low end covers refreshes with refaced cabinets and new counters; the high end covers full gut remodels with custom cabinetry and a moved layout.</p></div><div class="cg-faq-item"><h3>How do I calculate the cost per square foot for my kitchen remodel?</h3><p>Divide the total project cost by the floor area of the kitchen, measured wall to wall and including the island footprint. A $45,000 project in a 150-square-foot kitchen is $300 per square foot. Run it on a written quote as a sanity check; running it in reverse to set a budget tends to understate small kitchens and overstate large ones.</p></div><div class="cg-faq-item"><h3>Is $10,000 enough to renovate a kitchen in Florida?</h3><p>Only for a limited refresh. At $10,000 Florida guides describe repainted or refaced cabinet fronts, new hardware, lighting and perhaps a laminate or entry-level counter, with the layout and appliances kept. New cabinets, quartz counters or any plumbing or electrical relocation push the total well past that, and in Naples most refreshes start closer to $15,000.</p></div><div class="cg-faq-item"><h3>What is the 30 percent rule in remodeling?</h3><p>It is a budgeting guideline, used two ways, rather than a building rule. Some guides use it to mean total renovation spending should stay under about 30 percent of the home's value; others use it to mean holding back a cushion against surprises. For a kitchen, local Florida guides suggest a 10 to 15 percent contingency, and a kitchen alone rarely approaches 30 percent of a Naples home's value.</p></div><div class="cg-faq-item"><h3>Why is a small kitchen more expensive per square foot?</h3><p>Because the fixed costs do not shrink with the room. Permits, demolition, the trade minimums, the countertop install trip and the appliances cost about the same in a 90-square-foot galley as in a 250-square-foot kitchen, so spread over fewer square feet they raise the rate. A galley also carries more cabinet per square foot of floor. So a small kitchen costs less in total and more per square foot.</p></div><div class="cg-faq-item"><h3>How much do kitchen cabinets cost per linear foot in Florida?</h3><p>Roughly $200 to $600 per linear foot installed in 2026 Florida guides, from stock boxes at the low end to custom white oak or painted maple at the top. Semi-custom lines sit in the middle. Construction details such as plywood boxes, soft-close hardware and finished interiors move the figure within that range.</p></div><div class="cg-faq-item"><h3>How much do countertops cost per square foot in Florida?</h3><p>About $40 to $150 per square foot installed, across laminate, granite, quartz and quartzite, according to Florida guides. The slab count and the number of seams matter as much as the material, and an island or a waterfall edge adds a slab. Quartzite and marble generally sit at the upper end, quartz in the middle.</p></div><div class="cg-faq-item"><h3>Does cost per square foot include appliances and permits?</h3><p>In most published Florida figures, yes, which is part of why the range is so wide. The rate is the whole project cost divided by the floor area, so appliances, permits, demolition and labor are all inside it. Always ask which items a quoted figure includes before comparing it with another.</p></div><div class="cg-faq-item"><h3>Is cost per square foot higher in Naples than the rest of Florida?</h3><p>Generally toward the upper half of the state range, based on local 2026 guides. Naples finishes tend to run to semi-custom and custom cabinetry with quartzite or quartz, condo and coastal addresses add access and delivery time, and the January through April season tightens trade calendars.</p></div>
       </div>
     </div>
   </section>
@@ -5271,7 +5312,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
     <div class="container">
       <div class="quote-form-card form-variant-inline-panel">
         <h2 id="quote-form-heading">Get a Written Quote for Your Project</h2>
-        <p class="quote-form-sub">Tell us about your project and you&rsquo;ll hear back within one business day.</p>
+        <p class="quote-form-sub">A few details about the kitchen help us come prepared.</p>
         <form class="quote-form" action="https://leads-proxy.jeongpark95.workers.dev" method="POST" name="quote-lead" data-leads-form>
           <input type="hidden" name="run_id" value="kitchenremodel-naples-001">
           <div class="hp-field" aria-hidden="true"><input type="text" name="company_website" tabindex="-1" autocomplete="off"></div>
@@ -5283,17 +5324,17 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
           </div>
           <div class="quote-form-row">
             <input type="email" name="email" placeholder="Email (optional)" autocomplete="email" aria-label="Email address">
-            <input type="text" name="message" placeholder="What do you need done?" aria-label="Project details">
+            <input type="text" name="message" placeholder="Tell us about the kitchen: its size and what you want to change." aria-label="Project details">
           </div>
           <div class="cf-turnstile" data-sitekey="0x4AAAAAAGEhzYf9wGkV4IbN" data-size="flexible" data-theme="light"></div>
           <input type="hidden" name="cf-sitekey" value="0x4AAAAAAGEhzYf9wGkV4IbN">
-          <button type="submit" class="quote-form-submit">Request a Quote</button>
+          <button type="submit" class="quote-form-submit">Request a Consultation</button>
           <p class="form-consent">By sending this, you agree we can share your details with a local contractor who'll get in touch. <a href="/privacy/">Privacy Policy</a></p>
         </form>
         <div class="form-thank-you" aria-live="polite">
           <div class="form-thank-you-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
           <h3>We&rsquo;ve got your request!</h3>
-          <p>You&rsquo;ll hear back within one business day. Need to talk sooner? Call <a href="tel:+12395550100">+1 (239) 555-0100</a>.</p>
+          <p>Thanks, we have your details and will reply about your kitchen. Need to talk sooner? Call <a href="tel:+12395550100">+1 (239) 555-0100</a>.</p>
         </div>
       </div>
     </div>
@@ -5304,7 +5345,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       <h2>Ready to Replace the Rate With a Real Figure?</h2>
       <p>Send the form to set up a no-obligation consultation in Naples, Marco Island, Bonita Springs, Estero or Golden Gate. If you go ahead, the plan is drawn and the scope is written with every allowance named.</p>
       <div class="cg-cta-actions">
-        <a href="/contact/" class="btn-on-accent">Get an Estimate</a>
+        <a href="/contact/" class="btn-on-accent">Request a Consultation</a>
         <a href="tel:+12395550100" class="btn-ghost-dark">Call +1 (239) 555-0100</a>
       </div>
       <p class="referral-line">We'll put you in touch with a local contractor.</p>
@@ -5315,7 +5356,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
 
   <footer id="site-footer" role="contentinfo" class="footer-variant-light-minimal">
     <div class="footer-top"><div class="container"><div class="footer-grid">
-      <div class="footer-col"><h4><a href="/" class="footer-brand-link">Naples Kitchen Remodelers</a></h4><p>Design-build kitchen remodeling for Naples, Marco Island, Bonita Springs, Estero and Golden Gate. Measured plans, written scopes and schedules stated in weeks, including condo and HOA projects managed while you are away.</p><address class="footer-nap" style="font-style:normal;"><span>Naples, Florida</span><br><a href="tel:+12395550100" style="color:rgba(255,255,255,0.65);">+1 (239) 555-0100</a></address></div>
+      <div class="footer-col"><h4><a href="/" class="footer-brand-link">Naples Kitchen Remodelers</a></h4><p>Kitchen remodeling for houses and condos in Naples, Marco Island, Bonita Springs, Estero and Golden Gate, from cabinets and countertops to full remodels.</p><address class="footer-nap" style="font-style:normal;"><span>Naples, Florida</span><br><a href="tel:+12395550100" style="color:rgba(255,255,255,0.65);">+1 (239) 555-0100</a></address></div>
       <div class="footer-col"><h4>Services</h4><ul>
             <li><a href="/services/full-kitchen-remodels/">Full Kitchen Remodels</a></li>
             <li><a href="/services/custom-cabinets-and-refacing/">Custom Cabinets and Refacing</a></li>
@@ -5323,14 +5364,14 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
             <li><a href="/services/condo-and-hoa-kitchen-remodels/">Condo and HOA Kitchen Remodels</a></li>
             <li><a href="/services/kitchen-and-bath-remodeling/">Kitchen and Bath Remodeling</a></li>
 </ul></div>
-      <div class="footer-col"><h4>Inquiry</h4><ul><li><a href="/contact/">Request Quote</a></li><li><a href="/about/">About Us</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/blog/">Blog</a></li><li><a href="/cost-guides/kitchen-remodel-cost-naples-fl/">Price Guide</a></li><li><a href="/privacy/">Privacy Policy</a></li><li><a href="/terms/">Terms of Service</a></li></ul></div>
+      <div class="footer-col"><h4>Inquiry</h4><ul><li><a href="/contact/">Request a Consultation</a></li><li><a href="/about/">About Us</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/blog/">Blog</a></li><li><a href="/cost-guides/kitchen-remodel-cost-naples-fl/">Price Guide</a></li><li><a href="/privacy/">Privacy Policy</a></li><li><a href="/terms/">Terms of Service</a></li></ul></div>
       <div class="footer-col"><h4>Serving Southwest Florida</h4><ul><li><a href="/">Naples</a></li><li><a href="/areas/marco-island/">Marco Island</a></li><li><a href="/areas/bonita-springs/">Bonita Springs</a></li><li><a href="/areas/estero/">Estero</a></li><li><a href="/areas/golden-gate/">Golden Gate</a></li></ul></div>
     </div></div></div>
     <div class="container"><p class="footer-disclaimer">This site is a free service to assist homeowners in connecting with local service contractors. All contractors are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on this site.</p></div>
     <div class="container"><div class="footer-bottom"><span>&copy; 2026 Naples Kitchen Remodelers. All rights reserved.</span><span>Naples, Florida, United States</span></div></div>
   </footer>
 
-  <a id="mobile-cta" href="tel:+12395550100" aria-label="Call us now"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call Us &mdash; +1 (239) 555-0100</a>
+  <a id="mobile-cta" href="tel:+12395550100" aria-label="Call us now"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call Us: +1 (239) 555-0100</a>
 
   <script>
     function toggleMenu(btn){var m=document.getElementById('mobile-nav');m.classList.toggle('open');btn.setAttribute('aria-expanded',String(m.classList.contains('open')));}
