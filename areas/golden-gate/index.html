@@ -10,11 +10,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- area_page_meta_title is set per-area by stage4 -->
   <title>Kitchen Remodeling Golden Gate FL | Naples Kitchen Remodelers · +1 (239) 555-0100</title>
-  <meta name="description" content="Kitchen remodeling in Golden Gate, FL for Golden Gate City homes and Golden Gate Estates acreage. Measured plan, written scope and a schedule in weeks.">
+  <meta name="description" content="Kitchen remodeling in Golden Gate, FL for Golden Gate City homes and Golden Gate Estates acreage, with county permits filed. Request a consultation.">
   <link rel="canonical" href="https://kitchenremodel-naples-001.pages.dev/areas/golden-gate/">
   <!-- Open Graph -->
   <meta property="og:title" content="Kitchen Remodeling Golden Gate FL | Naples Kitchen Remodelers · +1 (239) 555-0100">
-  <meta property="og:description" content="Kitchen remodeling in Golden Gate, FL for Golden Gate City homes and Golden Gate Estates acreage. Measured plan, written scope and a schedule in weeks.">
+  <meta property="og:description" content="Kitchen remodeling in Golden Gate, FL for Golden Gate City homes and Golden Gate Estates acreage, with county permits filed. Request a consultation.">
   <meta property="og:url" content="https://kitchenremodel-naples-001.pages.dev/areas/golden-gate/">
   <meta property="og:image" content="https://kitchenremodel-naples-001.pages.dev/images/hero_bg.webp">
   <meta property="og:type" content="website">
@@ -84,7 +84,7 @@
 }
 
 /* ── DESIGN VARIETY: section pattern backgrounds ───────────────────────────────
-   One of these classes is applied to <body> via look-plain stats-brand-band order-proof-first. Patterns
+   One of these classes is applied to <body> via look-plain stats-brand-band order-proof-first stats-figure-plain heading-face-small. Patterns
    are subtle by design and applied to alternating sections to avoid visual
    noise. Stage 1 design_context.pattern_style selects which one. */
 
@@ -4879,6 +4879,47 @@ body.look-plain .cg-more-list li { border-bottom: 1px solid var(--border); }
 body.look-plain .cg-more-list a { display: block; padding: 14px 0; font-size: 17px; font-weight: 600; color: var(--color-primary); }
 body.look-plain .cg-more-list a:hover { text-decoration: underline; }
 /* review-round-nov-2026:end */
+/* legibility-nov-2026:start */
+/* Legibility fixes 2026-11-27, from what tools/legibility_check.py measured on the first plain sites. One marked chunk
+   so older tests can compare "today minus these fixes" (tests/legibility_round.py); every rule is scoped to the plain look.
+   Numbers band: where the brand accent is under 3:1 on the brand colour the assembler adds stats-figure-plain and the
+   figures are white (Naples coral on green measured 2.3:1). A readable accent keeps its colour. */
+body.look-plain.stats-brand-band.stats-figure-plain #stats-bar .stat-value { color: #fff; }
+/* Call-to-action band: the paragraph sits inside .cta-band-inner, so the rule above for "#cta-band > .container > p"
+   never reached it and it stayed at the classic 75% white (4.1 to 4.4:1 over the tinted photo). This is the intended 92%. */
+body.look-plain #cta-band .cta-band-sub { color: rgba(255,255,255,0.92); }
+/* Blog post top section: the breadcrumb and the date line are full white, and a dark scrim sits behind the text block
+   (it fades in over the block's top padding), so a pale photo cannot wash them out: 30% black keeps white text at 4.5:1 or better even where the photo is pure
+   white over these brand colours. The photo keeps its 45%. */
+body.look-plain .post-hero-overlay { background-image: linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.3) 100%); }
+body.look-plain .post-breadcrumb, body.look-plain .post-breadcrumb a, body.look-plain .post-meta { color: #fff; }
+/* Photo service cards (photo_overlay): the dark fade hangs from the card title, so however long the card's text is the
+   title and the text sit on it. It replaces the fade that was fixed at 20% to 72% of the card's height (a long text
+   pushed the title up into its light part: 2.7:1 on a pale photo). The icon tile stays above it. */
+body.look-plain #services.services-variant-photo-overlay .svc-photo::after { background: rgba(10,22,30,0.05); }
+body.look-plain #services.services-variant-photo-overlay .service-card h3::before { content: ""; position: absolute; z-index: -1; left: -22px; right: -22px; top: -110px; height: 1200px; pointer-events: none; background: linear-gradient(180deg, rgba(10,22,30,0) 0, rgba(10,22,30,0.5) 110px, rgba(10,22,30,0.88) 180px); }
+body.look-plain #services.services-variant-photo-overlay .service-icon { z-index: 2; }
+/* Heading faces that are hard to read small (config/font_traits.json: small-bodied like Cormorant Garamond, whose 17px
+   reads like 12.8px, or condensed like Bebas Neue): the assembler adds heading-face-small and the headings of 18px and
+   under, the contents and sidebar titles, the footer brand name and the logo kicker are set in the body font, bold.
+   Larger headings keep the heading face. */
+body.look-plain.heading-face-small #services:not(.services-variant-photo-overlay) .service-card h3, body.look-plain.heading-face-small .area-service-card h3, body.look-plain.heading-face-small .vp-text h3, body.look-plain.heading-face-small .vp-text h4, body.look-plain.heading-face-small .vp-card h3, body.look-plain.heading-face-small .process-step h3, body.look-plain.heading-face-small .application-item h3, body.look-plain.heading-face-small .related-card h3, body.look-plain.heading-face-small .cg-faq-item h3, body.look-plain.heading-face-small .blog-card-title, body.look-plain.heading-face-small .contact-info-header h2, body.look-plain.heading-face-small .sidebar-card h3, body.look-plain.heading-face-small .cg-toc-title, body.look-plain.heading-face-small #site-footer .footer-brand-link, body.look-plain.heading-face-small #site-nav .nav-logo .nav-logo-kicker { font-family: var(--font-body); font-weight: 700; }
+/* Footer disclaimer: 14px on both footers (it was 13.5px, and 13px on the light footer: one paragraph on every page,
+   which alone put 7 to 9% of a referral site's characters under 14px). */
+body.look-plain .footer-disclaimer, body.look-plain #site-footer.footer-variant-light-minimal .footer-disclaimer { font-size: 14px; }
+/* Blog pages toggle `is-open` (templates/blog-*.html); open the menu and the dropdown on it too. */
+body.look-plain .nav-mobile-menu.is-open { display: flex; }
+body.look-plain .nav-dropdown.is-open .nav-dropdown-menu { opacity: 1; pointer-events: auto; transform: translateY(0); visibility: visible; }
+/* legibility-nov-2026:end */
+/* template-round-nov-2026:start */
+/* ── Template round 2026-11-27 (tests/test_plain_template_round.py; the start and end markers let older tests set this
+   chunk aside: tests/template_round.py) ── */
+/* The open phone menu sits inside the fixed top bar, so a menu taller than the screen was cut off with no way to reach
+   its last links and button (Naples, Bakersfield on a 390x667 phone). It now scrolls inside what is left of the screen
+   under the bar (and the strip, where a site shows one), on every top bar and on the blog pages, whose script opens it
+   with `is-open`. The dynamic viewport height keeps the last button above a phone browser's toolbar. */
+body.look-plain #site-nav .nav-mobile-menu.open, body.look-plain #site-nav .nav-mobile-menu.is-open { max-height: calc(100vh - var(--plain-bar-h) - var(--plain-strip-h)); max-height: calc(100dvh - var(--plain-bar-h) - var(--plain-strip-h)); overflow-y: auto; overscroll-behavior: contain; }
+/* template-round-nov-2026:end */
 /* === hero-photo-beside === */
 /* Top section: photo_beside (the one light top section: the photo at full brightness with no tint on the left, 55% of the width;
    headline, text and buttons in dark ink on the page background beside it; on phones the photo comes first and the text follows).
@@ -4980,7 +5021,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
   </style>
   
 </head>
-<body class="look-plain stats-brand-band order-proof-first">
+<body class="look-plain stats-brand-band order-proof-first stats-figure-plain heading-face-small">
   
 <a href="#page-content" class="skip-link">Skip to main content</a>
 <header id="site-nav" role="banner" class="nav-variant-split-centered-logo">
@@ -5008,7 +5049,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       </ul>
       <div class="nav-actions">
         <a href="tel:+12395550100" class="nav-phone" aria-label="Call us"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+1 (239) 555-0100</a>
-        <a href="/contact/" class="btn btn-primary">Start With a Plan</a>
+        <a href="/contact/" class="btn btn-primary">Request a Consultation</a>
       </div>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
     </nav>
@@ -5025,7 +5066,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
     <a href="/cost-guides/kitchen-remodel-cost-naples-fl/" onclick="closeMenu()">Price Guide</a>
     <a href="/contact/" onclick="closeMenu()">Contact</a>
     <a href="tel:+12395550100" onclick="closeMenu()" style="display:flex;align-items:center;gap:8px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+1 (239) 555-0100</a>
-    <a href="/contact/" class="btn btn-primary mobile-cta" onclick="closeMenu()">Start With a Plan</a>
+    <a href="/contact/" class="btn btn-primary mobile-cta" onclick="closeMenu()">Request a Consultation</a>
   </nav>
 </header>
 
@@ -5035,11 +5076,11 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
   <section class="area-hero" style="background-image:url('/images/hero_bg.webp');">
     <div class="container">
       <span class="section-eyebrow">Service Area</span>
-      <h1>Kitchen Remodeling Golden Gate FL, for City Lots and Estates Acreage Alike</h1>
+      <h1>Kitchen Remodeling in Golden Gate, FL</h1>
       <p class="area-coords" aria-hidden="true">26.1878&deg; N &middot; -81.6953&deg; W</p>
       <p>Golden Gate City and Golden Gate Estates, east of Naples in Collier County.</p>
       <div class="hero-ctas">
-        <a href="/contact/" class="btn btn-primary">Start With a Plan</a>
+        <a href="/contact/" class="btn btn-primary">Request a Consultation</a>
         <p><a href="tel:+12395550100" class="hero-phone"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+1 (239) 555-0100</a></p>
       </div>
       <p class="referral-line">We'll put you in touch with a local contractor.</p>
@@ -5056,13 +5097,13 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
           <p class="area-intro-body">Golden Gate is two places that share a name east of Naples: Golden Gate City, a census-designated place of about 25,000 people on a dense two-mile-square grid of canals and older homes, and Golden Gate Estates beyond it, where Gulf American sold 1.25- to 5-acre lots in the 1960s and most of the houses came decades later. Both lie in Collier County outside any city limits, so a kitchen here is permitted through the county's office on North Horseshoe Drive rather than a city hall, and Golden Gate Community Park on Santa Barbara Boulevard is the landmark everyone uses for directions. A good fit here is often a <a href="/services/kitchen-and-bath-remodeling/">kitchen and bath remodel run on one schedule</a>, since newer Estates houses tend to have both rooms due at once.</p>
         </div>
         <div class="area-cta-card">
-          <h3>Get an Estimate</h3>
-          <p>We serve Golden Gate and surrounding neighborhoods. Contact us today for a no-obligation quote.</p>
+          <h3>Thinking About a New Kitchen?</h3>
+          <p>We serve Golden Gate and surrounding neighborhoods. Tell us about the room and we'll set up a consultation.</p>
           <a href="tel:+12395550100" class="area-cta-phone">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             +1 (239) 555-0100
           </a>
-          <a href="/contact/" class="btn btn-primary" style="width:100%; justify-content:center;">Request a Quote</a>
+          <a href="/contact/" class="btn btn-primary" style="width:100%; justify-content:center;">Request a Consultation</a>
           <p class="referral-line">We'll put you in touch with a local contractor.</p>
         </div>
       </div>
@@ -5077,27 +5118,27 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       <div class="area-services-grid services-grid--3col">
 <div class="area-service-card">
   <h3>Full Kitchen Remodels in Golden Gate</h3>
-  <p>Gut remodels for Naples houses, from layout and cabinetry through stone, lighting and permits, run on a written scope and a schedule stated in weeks.</p>
+  <p>Full gut remodels of house kitchens, from the layout and cabinetry through stone, lighting and permits.</p>
   <a href="/services/full-kitchen-remodels/">Learn more →</a>
 </div>
 <div class="area-service-card">
   <h3>Custom Cabinets and Refacing in Golden Gate</h3>
-  <p>New custom cabinetry or refacing of sound existing boxes, with door styles, finishes and hardware chosen for Naples humidity and salt air.</p>
+  <p>New custom cabinetry or refacing of sound existing boxes, with door styles, finishes and hardware chosen for Gulf Coast humidity and salt air.</p>
   <a href="/services/custom-cabinets-and-refacing/">Learn more →</a>
 </div>
 <div class="area-service-card">
   <h3>Countertops and Backsplashes in Golden Gate</h3>
-  <p>Quartz, quartzite, granite and porcelain slab countertops with matching or contrasting backsplashes, templated, fabricated and installed on a named week.</p>
+  <p>Quartz, quartzite, granite and porcelain slab countertops with matching or contrasting backsplashes, templated on the set cabinets, then fabricated and installed.</p>
   <a href="/services/countertops-and-backsplashes/">Learn more →</a>
 </div>
 <div class="area-service-card">
   <h3>Condo and HOA Kitchen Remodels in Golden Gate</h3>
-  <p>High-rise and gated-community kitchens handled end to end: the association approval packet, building hours, elevator and parking rules, and a schedule the board will sign.</p>
+  <p>Condo and gated-community kitchens, with the association approval packet, building hours, and elevator and parking rules handled as part of the job.</p>
   <a href="/services/condo-and-hoa-kitchen-remodels/">Learn more →</a>
 </div>
 <div class="area-service-card">
   <h3>Kitchen and Bath Remodeling in Golden Gate</h3>
-  <p>Kitchen and bathroom remodels run as one project: shared trades, one permit set, one schedule in weeks and one point of contact for both rooms.</p>
+  <p>A kitchen and a bathroom remodeled as one project, so the plumber and electrician rough in both rooms together under one set of permits.</p>
   <a href="/services/kitchen-and-bath-remodeling/">Learn more →</a>
 </div>
       </div>
@@ -5132,7 +5173,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">
-            <div class="faq-answer-inner">In a Golden Gate City house that keeps its layout, about $30,000 usually covers new semi-custom cabinets, a quartz top, a tile backsplash, lighting and the labor, which is a real remodel rather than a refresh. In an Estates house with a large open kitchen and an island, the same budget covers either the cabinets or the stone at a good grade, so the first decision is which change matters most. The measured plan prices your kitchen line by line, with the allowances written down, before you commit to either path.</div>
+            <div class="faq-answer-inner">In a Golden Gate City house that keeps its layout, about $30,000 typically covers refaced or stock cabinets, a quartz top, a tile backsplash and lighting. New semi-custom cabinets usually push the total above that. In an Estates house with a large open kitchen and an island, the same budget typically covers either the cabinets or the stone at a good grade, so the first decision is which change matters most. Those are market observations, and a quote for your own kitchen prices it line by line.</div>
           </div>
         </div>
         <div class="faq-item" role="listitem">
@@ -5155,7 +5196,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
         </div>
         <div class="faq-item" role="listitem">
           <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
-            <span>In what order should a kitchen remodel be done?</span>
+            <span>What order does the work go in on a Golden Gate kitchen?</span>
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">
@@ -5174,7 +5215,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       <p class="area-location-blurb">Golden Gate lies east of Naples in Collier County, outside any city limits, where Golden Gate Parkway crosses Interstate 75. Golden Gate City, the census-designated place, fills a two-mile square of about 4.1 square miles and counted 25,321 people in 2020. The Golden Gate Canal runs through it, draining west to a control structure just past the interstate.</p>
 <p class="area-location-blurb">Golden Gate Estates is the other half. From 1960, Gulf American Land Corporation bought 26,000 acres, then more than 114,000 by the end of 1963, and sold it as raw lots of 1.25 to 5 acres. The company cut 183 miles of roads and 813 miles of canals, but by 1974 only about ten percent had a house; most Estates homes came much later.</p>
 <p class="area-location-blurb">An older Golden Gate City house has a compact kitchen, often with a soffit, a wall to the living room and the original cabinets. A newer Estates house has a large open kitchen with builder-grade cabinets and granite, no city water in much of the Estates, and no association to ask. Humidity is the shared factor in both.</p>
-<p class="area-location-blurb">Permits go to Collier County's Growth Management office at 2800 North Horseshoe Drive, and the scope lists which items need one. Then the same order as anywhere we work: measured plan, written allowances, schedule in weeks.</p>
+<p class="area-location-blurb">Permits go to Collier County's Growth Management office at 2800 North Horseshoe Drive, and the scope lists which items need one. Then the same order as anywhere we work: a measured plan, then a written scope with allowances.</p>
     </div>
   </section>
 
@@ -5183,8 +5224,8 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
   <section class="quote-form-section" aria-labelledby="quote-form-heading">
     <div class="container">
       <div class="quote-form-card form-variant-inline-panel">
-        <h2 id="quote-form-heading">Get a Quote in Golden Gate</h2>
-        <p class="quote-form-sub">Tell us about your project and you&rsquo;ll hear back within one business day.</p>
+        <h2 id="quote-form-heading">Set Up a Consultation in Golden Gate</h2>
+        <p class="quote-form-sub">A few details about the kitchen help us come prepared.</p>
         <form class="quote-form" action="https://leads-proxy.jeongpark95.workers.dev" method="POST" name="quote-lead" data-leads-form>
           <input type="hidden" name="run_id" value="kitchenremodel-naples-001">
           <div class="hp-field" aria-hidden="true"><input type="text" name="company_website" tabindex="-1" autocomplete="off"></div>
@@ -5196,17 +5237,17 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
           </div>
           <div class="quote-form-row">
             <input type="email" name="email" placeholder="Email (optional)" autocomplete="email" aria-label="Email address">
-            <input type="text" name="message" placeholder="What do you need done?" aria-label="Project details">
+            <input type="text" name="message" placeholder="Tell us about the kitchen: its size and what you want to change." aria-label="Project details">
           </div>
           <div class="cf-turnstile" data-sitekey="0x4AAAAAAGEhzYf9wGkV4IbN" data-size="flexible" data-theme="light"></div>
           <input type="hidden" name="cf-sitekey" value="0x4AAAAAAGEhzYf9wGkV4IbN">
-          <button type="submit" class="quote-form-submit">Request a Quote</button>
+          <button type="submit" class="quote-form-submit">Request a Consultation</button>
           <p class="form-consent">By sending this, you agree we can share your details with a local contractor who'll get in touch. <a href="/privacy/">Privacy Policy</a></p>
         </form>
         <div class="form-thank-you" aria-live="polite">
           <div class="form-thank-you-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
           <h3>We&rsquo;ve got your request!</h3>
-          <p>You&rsquo;ll hear back within one business day. Need to talk sooner? Call <a href="tel:+12395550100">+1 (239) 555-0100</a>.</p>
+          <p>Thanks, we have your details and will reply about your kitchen. Need to talk sooner? Call <a href="tel:+12395550100">+1 (239) 555-0100</a>.</p>
         </div>
       </div>
     </div>
@@ -5214,8 +5255,8 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
 
   <section id="cta-band" aria-labelledby="cta-heading" style="--cta-photo:url('/images/cta_bg.webp')">
     <div class="container">
-      <h2 id="cta-heading">Ready to See Your Kitchen Measured and Planned?</h2>
-      <p>Request a no-obligation consultation. We will measure the room and talk through layout and materials, and if you go ahead, the project starts with a drawn plan, a written scope and a schedule in weeks.</p>
+      <h2 id="cta-heading">Thinking About a New Kitchen in Naples?</h2>
+      <p>Call or send the form to set up a no-obligation consultation. We come out, measure the room and talk through layout, cabinets and stone with you, and you decide from there whether to go ahead.</p>
       <a href="/contact/" class="cta-band-btn">Request a Consultation</a>
     </div>
   </section>
@@ -5256,7 +5297,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
 
 <footer id="site-footer" role="contentinfo" class="footer-variant-light-minimal">
   <div class="footer-top"><div class="container"><div class="footer-grid">
-    <div class="footer-col"><h4><a href="/" class="footer-brand-link">Naples Kitchen Remodelers</a></h4><p>Design-build kitchen remodeling for Naples, Marco Island, Bonita Springs, Estero and Golden Gate. Measured plans, written scopes and schedules stated in weeks, including condo and HOA projects managed while you are away.</p><address class="footer-nap" style="font-style:normal;"><span>Naples, Florida</span><br><a href="tel:+12395550100" style="color:rgba(255,255,255,0.65);">+1 (239) 555-0100</a></address></div>
+    <div class="footer-col"><h4><a href="/" class="footer-brand-link">Naples Kitchen Remodelers</a></h4><p>Kitchen remodeling for houses and condos in Naples, Marco Island, Bonita Springs, Estero and Golden Gate, from cabinets and countertops to full remodels.</p><address class="footer-nap" style="font-style:normal;"><span>Naples, Florida</span><br><a href="tel:+12395550100" style="color:rgba(255,255,255,0.65);">+1 (239) 555-0100</a></address></div>
     <div class="footer-col"><h4>Services</h4><ul>
             <li><a href="/services/full-kitchen-remodels/">Full Kitchen Remodels</a></li>
             <li><a href="/services/custom-cabinets-and-refacing/">Custom Cabinets and Refacing</a></li>
@@ -5264,14 +5305,14 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
             <li><a href="/services/condo-and-hoa-kitchen-remodels/">Condo and HOA Kitchen Remodels</a></li>
             <li><a href="/services/kitchen-and-bath-remodeling/">Kitchen and Bath Remodeling</a></li>
 </ul></div>
-    <div class="footer-col"><h4>Inquiry</h4><ul><li><a href="/contact/">Request Quote</a></li><li><a href="/about/">About Us</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/blog/">Blog</a></li><li><a href="/cost-guides/kitchen-remodel-cost-naples-fl/">Price Guide</a></li><li><a href="/privacy/">Privacy Policy</a></li><li><a href="/terms/">Terms of Service</a></li></ul></div>
+    <div class="footer-col"><h4>Inquiry</h4><ul><li><a href="/contact/">Request a Consultation</a></li><li><a href="/about/">About Us</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/blog/">Blog</a></li><li><a href="/cost-guides/kitchen-remodel-cost-naples-fl/">Price Guide</a></li><li><a href="/privacy/">Privacy Policy</a></li><li><a href="/terms/">Terms of Service</a></li></ul></div>
     <div class="footer-col"><h4>Serving Southwest Florida</h4><ul><li><a href="/">Naples</a></li><li><a href="/areas/marco-island/">Marco Island</a></li><li><a href="/areas/bonita-springs/">Bonita Springs</a></li><li><a href="/areas/estero/">Estero</a></li><li><a href="/areas/golden-gate/">Golden Gate</a></li></ul></div>
   </div></div></div>
   <div class="container"><p class="footer-disclaimer">This site is a free service to assist homeowners in connecting with local service contractors. All contractors are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on this site.</p></div>
   <div class="container"><div class="footer-bottom"><span>© 2026 Naples Kitchen Remodelers. All rights reserved.</span><span>Naples, Florida, United States</span></div></div>
 </footer>
 
-<a id="mobile-cta" href="tel:+12395550100" aria-label="Call us now"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call Us — +1 (239) 555-0100</a>
+<a id="mobile-cta" href="tel:+12395550100" aria-label="Call us now"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call Us: +1 (239) 555-0100</a>
 
 <script>
   function toggleFaq(btn){var item=btn.closest('.faq-item');var isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(el){el.classList.remove('open');el.querySelector('.faq-question').setAttribute('aria-expanded','false');});if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}

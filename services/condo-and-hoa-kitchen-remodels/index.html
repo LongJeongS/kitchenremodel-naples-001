@@ -50,7 +50,7 @@
   </script>
   <!-- FAQPage schema for service-specific Q&A -->
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does a Naples condo board usually want in the kitchen approval packet?", "acceptedAnswer": {"@type": "Answer", "text": "Drawings of the proposed kitchen, a list of finishes with product sheets, the start and completion dates, daily work hours, a debris removal plan and the contractor's registration details. Some associations add a refundable deposit; one Pelican Bay building collects $1,500 and charges $500 a day past the agreed completion date. Many boards meet once a month, so two to six weeks for approval is typical. The packet is prepared for you, and the schedule is not set until the approval is in hand."}}, {"@type": "Question", "name": "Can the association stop me from changing my own kitchen?", "acceptedAnswer": {"@type": "Answer", "text": "In most cases it can require approval, and in some cases it can say no. Florida's condominium statute lets a declaration require board approval before alterations, and anything touching common elements, such as a plumbing stack, a shear wall or the slab, needs the association's consent. Material changes to common elements require 75 percent of voting interests unless the declaration says otherwise. Inside your unit the board generally approves work that follows its rules on hours, noise, flooring underlayment and contractor registration."}}, {"@type": "Question", "name": "When is the best time of year to remodel a condo kitchen in Naples?", "acceptedAnswer": {"@type": "Answer", "text": "The off-season, roughly May through October or November. Some Naples associations limit major renovation to those months so full-time residents are not living beside demolition during season, and several set a hard date by which work must stop. The upside for a seasonal owner is that the kitchen is finished before you return, with weekly photos while you are away. The downside is that fabricators and inspectors are busy in the same window, which is why the schedule is set as soon as the board approves."}}, {"@type": "Question", "name": "Can I put tile or wood floors in my condo kitchen?", "acceptedAnswer": {"@type": "Answer", "text": "Usually yes, with an approved sound underlayment. Hard-surface flooring rules are common in Naples condo documents; one Pelican Bay high-rise requires written board approval and an underlayment equivalent to a quarter inch of Proflex 90 with perimeter isolation on every floor above the garage level, inspected before the tile goes down. The underlayment is listed on the scope with the flooring allowance so it is priced from the start."}}, {"@type": "Question", "name": "Who handles the elevator reservation, parking and worker sign-in?", "acceptedAnswer": {"@type": "Answer", "text": "The project manager, as part of the job. Elevator reservations and padding, hallway protection, the parking spots the building assigns to trades, daily sign-in at the desk and the rule that debris leaves daily are all written into the schedule before work starts. You are copied on the correspondence with the manager so there is one record. Delivery days for cabinets and stone are booked with the building weeks ahead, and if a delivery moves, you and the building hear about it first."}}]}
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does a Naples condo board usually want in the kitchen approval packet?", "acceptedAnswer": {"@type": "Answer", "text": "Drawings of the proposed kitchen, a list of finishes with product sheets, the start and completion dates, daily work hours, a debris removal plan and the contractor's registration details. Some associations add a refundable deposit; one Pelican Bay building collects $1,500 and charges $500 a day past the agreed completion date. Many boards meet once a month, so two to six weeks for approval is typical. The packet is prepared for you, and the schedule is not set until the approval is in hand."}}, {"@type": "Question", "name": "Can the association stop me from changing my own kitchen?", "acceptedAnswer": {"@type": "Answer", "text": "In most cases it can require approval, and in some cases it can say no. Florida's condominium statute lets a declaration require board approval before alterations, and anything touching common elements, such as a plumbing stack, a shear wall or the slab, needs the association's consent. Material changes to common elements require 75 percent of voting interests unless the declaration says otherwise. Inside your unit the board generally approves work that follows its rules on hours, noise, flooring underlayment and contractor registration."}}, {"@type": "Question", "name": "When is the best time of year to remodel a condo kitchen in Naples?", "acceptedAnswer": {"@type": "Answer", "text": "The off-season, roughly May through October or November. Some Naples associations limit major renovation to those months so full-time residents are not living beside demolition during season, and several set a hard date by which work must stop. The upside for a seasonal owner is that the kitchen is finished before you return, with weekly photos while you are away. The downside is that fabricators and inspectors are busy in the same window, which is why the schedule is set as soon as the board approves."}}, {"@type": "Question", "name": "Can I put tile or wood floors in my condo kitchen?", "acceptedAnswer": {"@type": "Answer", "text": "Usually yes, with an approved sound underlayment. Hard-surface flooring rules are common in Naples condo documents; one Pelican Bay high-rise requires written board approval and an underlayment equivalent to a quarter inch of Proflex 90 with perimeter isolation on every floor above the garage level, inspected before the tile goes down. The underlayment is listed on the scope with the flooring allowance so it is priced from the start."}}, {"@type": "Question", "name": "Who handles the elevator reservation, parking and worker sign-in?", "acceptedAnswer": {"@type": "Answer", "text": "We do, as part of the job. Elevator reservations and padding, hallway protection, the parking spots the building assigns to trades, daily sign-in at the desk and the rule that debris leaves daily are all written into the schedule before work starts. You are copied on the correspondence with the manager so there is one record. Delivery days for cabinets and stone are booked with the building weeks ahead, and if a delivery moves, we tell you and the building."}}]}
   </script>
   <style>
     /* ═══════════════════════════════════════════════════════════════
@@ -83,7 +83,7 @@
 }
 
 /* ── DESIGN VARIETY: section pattern backgrounds ───────────────────────────────
-   One of these classes is applied to <body> via look-plain stats-brand-band order-proof-first. Patterns
+   One of these classes is applied to <body> via look-plain stats-brand-band order-proof-first stats-figure-plain heading-face-small. Patterns
    are subtle by design and applied to alternating sections to avoid visual
    noise. Stage 1 design_context.pattern_style selects which one. */
 
@@ -4878,6 +4878,47 @@ body.look-plain .cg-more-list li { border-bottom: 1px solid var(--border); }
 body.look-plain .cg-more-list a { display: block; padding: 14px 0; font-size: 17px; font-weight: 600; color: var(--color-primary); }
 body.look-plain .cg-more-list a:hover { text-decoration: underline; }
 /* review-round-nov-2026:end */
+/* legibility-nov-2026:start */
+/* Legibility fixes 2026-11-27, from what tools/legibility_check.py measured on the first plain sites. One marked chunk
+   so older tests can compare "today minus these fixes" (tests/legibility_round.py); every rule is scoped to the plain look.
+   Numbers band: where the brand accent is under 3:1 on the brand colour the assembler adds stats-figure-plain and the
+   figures are white (Naples coral on green measured 2.3:1). A readable accent keeps its colour. */
+body.look-plain.stats-brand-band.stats-figure-plain #stats-bar .stat-value { color: #fff; }
+/* Call-to-action band: the paragraph sits inside .cta-band-inner, so the rule above for "#cta-band > .container > p"
+   never reached it and it stayed at the classic 75% white (4.1 to 4.4:1 over the tinted photo). This is the intended 92%. */
+body.look-plain #cta-band .cta-band-sub { color: rgba(255,255,255,0.92); }
+/* Blog post top section: the breadcrumb and the date line are full white, and a dark scrim sits behind the text block
+   (it fades in over the block's top padding), so a pale photo cannot wash them out: 30% black keeps white text at 4.5:1 or better even where the photo is pure
+   white over these brand colours. The photo keeps its 45%. */
+body.look-plain .post-hero-overlay { background-image: linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.3) 100%); }
+body.look-plain .post-breadcrumb, body.look-plain .post-breadcrumb a, body.look-plain .post-meta { color: #fff; }
+/* Photo service cards (photo_overlay): the dark fade hangs from the card title, so however long the card's text is the
+   title and the text sit on it. It replaces the fade that was fixed at 20% to 72% of the card's height (a long text
+   pushed the title up into its light part: 2.7:1 on a pale photo). The icon tile stays above it. */
+body.look-plain #services.services-variant-photo-overlay .svc-photo::after { background: rgba(10,22,30,0.05); }
+body.look-plain #services.services-variant-photo-overlay .service-card h3::before { content: ""; position: absolute; z-index: -1; left: -22px; right: -22px; top: -110px; height: 1200px; pointer-events: none; background: linear-gradient(180deg, rgba(10,22,30,0) 0, rgba(10,22,30,0.5) 110px, rgba(10,22,30,0.88) 180px); }
+body.look-plain #services.services-variant-photo-overlay .service-icon { z-index: 2; }
+/* Heading faces that are hard to read small (config/font_traits.json: small-bodied like Cormorant Garamond, whose 17px
+   reads like 12.8px, or condensed like Bebas Neue): the assembler adds heading-face-small and the headings of 18px and
+   under, the contents and sidebar titles, the footer brand name and the logo kicker are set in the body font, bold.
+   Larger headings keep the heading face. */
+body.look-plain.heading-face-small #services:not(.services-variant-photo-overlay) .service-card h3, body.look-plain.heading-face-small .area-service-card h3, body.look-plain.heading-face-small .vp-text h3, body.look-plain.heading-face-small .vp-text h4, body.look-plain.heading-face-small .vp-card h3, body.look-plain.heading-face-small .process-step h3, body.look-plain.heading-face-small .application-item h3, body.look-plain.heading-face-small .related-card h3, body.look-plain.heading-face-small .cg-faq-item h3, body.look-plain.heading-face-small .blog-card-title, body.look-plain.heading-face-small .contact-info-header h2, body.look-plain.heading-face-small .sidebar-card h3, body.look-plain.heading-face-small .cg-toc-title, body.look-plain.heading-face-small #site-footer .footer-brand-link, body.look-plain.heading-face-small #site-nav .nav-logo .nav-logo-kicker { font-family: var(--font-body); font-weight: 700; }
+/* Footer disclaimer: 14px on both footers (it was 13.5px, and 13px on the light footer: one paragraph on every page,
+   which alone put 7 to 9% of a referral site's characters under 14px). */
+body.look-plain .footer-disclaimer, body.look-plain #site-footer.footer-variant-light-minimal .footer-disclaimer { font-size: 14px; }
+/* Blog pages toggle `is-open` (templates/blog-*.html); open the menu and the dropdown on it too. */
+body.look-plain .nav-mobile-menu.is-open { display: flex; }
+body.look-plain .nav-dropdown.is-open .nav-dropdown-menu { opacity: 1; pointer-events: auto; transform: translateY(0); visibility: visible; }
+/* legibility-nov-2026:end */
+/* template-round-nov-2026:start */
+/* ── Template round 2026-11-27 (tests/test_plain_template_round.py; the start and end markers let older tests set this
+   chunk aside: tests/template_round.py) ── */
+/* The open phone menu sits inside the fixed top bar, so a menu taller than the screen was cut off with no way to reach
+   its last links and button (Naples, Bakersfield on a 390x667 phone). It now scrolls inside what is left of the screen
+   under the bar (and the strip, where a site shows one), on every top bar and on the blog pages, whose script opens it
+   with `is-open`. The dynamic viewport height keeps the last button above a phone browser's toolbar. */
+body.look-plain #site-nav .nav-mobile-menu.open, body.look-plain #site-nav .nav-mobile-menu.is-open { max-height: calc(100vh - var(--plain-bar-h) - var(--plain-strip-h)); max-height: calc(100dvh - var(--plain-bar-h) - var(--plain-strip-h)); overflow-y: auto; overscroll-behavior: contain; }
+/* template-round-nov-2026:end */
 /* === hero-photo-beside === */
 /* Top section: photo_beside (the one light top section: the photo at full brightness with no tint on the left, 55% of the width;
    headline, text and buttons in dark ink on the page background beside it; on phones the photo comes first and the text follows).
@@ -5018,7 +5059,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
   </style>
   
 </head>
-<body class="look-plain stats-brand-band order-proof-first">
+<body class="look-plain stats-brand-band order-proof-first stats-figure-plain heading-face-small">
   
 <a href="#page-content" class="skip-link">Skip to main content</a>
 <header id="site-nav" role="banner" class="nav-variant-split-centered-logo">
@@ -5046,7 +5087,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       </ul>
       <div class="nav-actions">
         <a href="tel:+12395550100" class="nav-phone" aria-label="Call us"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+1 (239) 555-0100</a>
-        <a href="/contact/" class="btn btn-primary">Start With a Plan</a>
+        <a href="/contact/" class="btn btn-primary">Request a Consultation</a>
       </div>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
     </nav>
@@ -5063,7 +5104,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
     <a href="/cost-guides/kitchen-remodel-cost-naples-fl/" onclick="closeMenu()">Price Guide</a>
     <a href="/contact/" onclick="closeMenu()">Contact</a>
     <a href="tel:+12395550100" onclick="closeMenu()" style="display:flex;align-items:center;gap:8px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+1 (239) 555-0100</a>
-    <a href="/contact/" class="btn btn-primary mobile-cta" onclick="closeMenu()">Start With a Plan</a>
+    <a href="/contact/" class="btn btn-primary mobile-cta" onclick="closeMenu()">Request a Consultation</a>
   </nav>
 </header>
 
@@ -5076,7 +5117,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       <h1>Condo and HOA Kitchen Remodels in Naples</h1>
       <p>Approval packet, building hours and elevator rules handled with the remodel.</p>
       <div class="svc-hero-actions">
-        <a href="/contact/" class="btn btn-primary">Start With a Plan</a>
+        <a href="/contact/" class="btn btn-primary">Request a Consultation</a>
         <a href="tel:+12395550100" class="btn-outline-white">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:8px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           Call +1 (239) 555-0100
@@ -5091,7 +5132,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
     <div class="container">
       <span class="section-eyebrow">Built for Naples</span>
       <h2 id="local-intro-heading">Condo Kitchen Remodels in Naples: Working Inside the Building's Rules</h2>
-      <p class="svc-local-intro-body">A Naples condo kitchen is remodeled twice: on paper for the association, then in the unit. Boards want drawings, finish sheets, dates and a debris plan before a tool comes through the lobby.</p>
+      <p class="svc-local-intro-body">A Naples condo kitchen has to be approved by the association before any work starts in the unit. Boards want drawings, finish sheets, dates and a debris plan before a tool comes through the lobby.</p>
 <p class="svc-local-intro-body">Building rules are specific. One Pelican Bay high-rise allows renovation work only between 8:00 a.m. and 5:00 p.m., never on weekends or holidays, and sets a completion date of no more than three months.</p>
 <p class="svc-local-intro-body">Approval packet, elevator reservations and schedule are handled together, with the building's rules on page one of the scope. Projects that add a bathroom run as <a href="/services/kitchen-and-bath-remodeling/">kitchen and bath remodeling</a> under one approval.</p>
     </div>
@@ -5100,8 +5141,8 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
   <!-- ── Benefits ──────────────────────────────────────────────────────── -->
   <section class="svc-benefits" aria-labelledby="benefits-heading">
     <div class="container">
-      <span class="section-eyebrow">Why Choose Us</span>
-      <h2 id="benefits-heading" class="section-title">Why Naples Homeowners Choose Us for Condo and HOA Kitchen Remodels</h2>
+      <span class="section-eyebrow">How We Work</span>
+      <h2 id="benefits-heading" class="section-title">What to Expect with Condo and HOA Kitchen Remodels</h2>
       <div class="benefits-grid">
         <div class="benefit-card">
           <div class="benefit-icon" data-ms="verified" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
@@ -5120,8 +5161,8 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
         </div>
         <div class="benefit-card">
           <div class="benefit-icon" data-ms="verified" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></div>
-          <div class="benefit-title">Owner Away, Project On</div>
-          <div class="benefit-body">Seasonal owners get weekly photos and one contact while the work runs in the off-season window.</div>
+          <div class="benefit-title">Run While You Are Away</div>
+          <div class="benefit-body">Seasonal owners get weekly photos while the work runs in the off-season window.</div>
         </div>
       </div>
     </div>
@@ -5132,7 +5173,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
     <div class="container">
       <span class="section-eyebrow">Materials &amp; Specs</span>
       <h2 id="specs-heading" class="section-title">What We Use for Condo and HOA Kitchen Remodels</h2>
-      <p class="section-subtitle">Industry-standard materials and specifications you can rely on.</p>
+      <p class="section-subtitle">What a typical project of this kind includes.</p>
       <div class="specs-grid">
         <div class="spec-item">
           <div class="spec-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
@@ -5159,14 +5200,14 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
           <div class="spec-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></div>
           <div class="spec-text">
             <div class="spec-label">Typical Timeline</div>
-            <div class="spec-value">About 6 to 12 weeks on site for most condo kitchens, planned inside the board's completion date</div>
+            <div class="spec-value">Set by the scope and the building's work hours, and planned inside the board's completion date</div>
           </div>
         </div>
         <div class="spec-item">
           <div class="spec-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div class="spec-text">
-            <div class="spec-label">Warranty Coverage</div>
-            <div class="spec-value">Workmanship terms stated in writing on the scope; sound underlayment where the association requires it</div>
+            <div class="spec-label">Manufacturer Warranties</div>
+            <div class="spec-value">Set by the maker of each cabinet, appliance and surface. Have the workmanship terms written into the scope</div>
           </div>
         </div>
       </div>
@@ -5178,7 +5219,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
     <div class="container">
       <span class="section-eyebrow">How a Project Runs</span>
       <h2 id="process-heading" class="section-title">Your Naples Kitchen Remodel in 4 Steps</h2>
-      <p class="section-subtitle">The same order every time: measure, write it down, build to the named weeks, walk through with the scope in hand.</p>
+      <p class="section-subtitle">Here is how a kitchen goes from the first visit to the final walkthrough.</p>
       <div class="process-steps">
         <div class="process-step">
           <div class="process-step-num" aria-hidden="true">1</div>
@@ -5202,7 +5243,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
         </div>
       </div>
       <div class="process-result-img">
-        <img src="/images/service_4_step_4.webp" alt="Daily cleanup during a condo kitchen remodel in a high-rise" loading="lazy" width="1200" height="525">
+        <img src="/images/service_4_step_4.webp" alt="Worker sweeping a carpeted hallway and carrying a roll of floor protection" loading="lazy" width="1200" height="525">
       </div>
     </div>
   </section>
@@ -5242,7 +5283,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
   <section class="svc-faqs" aria-labelledby="svc-faq-heading">
     <div class="container">
       <span class="section-eyebrow">Common Questions</span>
-      <h2 id="svc-faq-heading" class="section-title">Condo and HOA Kitchen Remodels — Frequently Asked Questions</h2>
+      <h2 id="svc-faq-heading" class="section-title">Condo and HOA Kitchen Remodels Questions</h2>
       <div class="svc-faq-list">
         <details class="svc-faq-item">
           <summary class="svc-faq-question">What does a Naples condo board usually want in the kitchen approval packet?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
@@ -5263,7 +5304,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
         </details>
         <details class="svc-faq-item">
           <summary class="svc-faq-question">Who handles the elevator reservation, parking and worker sign-in?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
-          <div class="svc-faq-answer">The project manager, as part of the job. Elevator reservations and padding, hallway protection, the parking spots the building assigns to trades, daily sign-in at the desk and the rule that debris leaves daily are all written into the schedule before work starts. You are copied on the correspondence with the manager so there is one record. Delivery days for cabinets and stone are booked with the building weeks ahead, and if a delivery moves, you and the building hear about it first.</div>
+          <div class="svc-faq-answer">We do, as part of the job. Elevator reservations and padding, hallway protection, the parking spots the building assigns to trades, daily sign-in at the desk and the rule that debris leaves daily are all written into the schedule before work starts. You are copied on the correspondence with the manager so there is one record. Delivery days for cabinets and stone are booked with the building weeks ahead, and if a delivery moves, we tell you and the building.</div>
         </details>
       </div>
       <div style="margin-top:28px; text-align:center;">
@@ -5280,22 +5321,22 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       <div class="related-grid" data-count="4">
         <a href="/services/full-kitchen-remodels/" class="related-card">
           <h3>Full Kitchen Remodels</h3>
-          <p>Gut remodels for Naples houses, from layout and cabinetry through stone, lighting and permits, run on a written scope and a schedule stated in weeks.</p>
+          <p>Full gut remodels of house kitchens, from the layout and cabinetry through stone, lighting and permits.</p>
           <span class="related-card-link">Learn more →</span>
         </a>
         <a href="/services/custom-cabinets-and-refacing/" class="related-card">
           <h3>Custom Cabinets and Refacing</h3>
-          <p>New custom cabinetry or refacing of sound existing boxes, with door styles, finishes and hardware chosen for Naples humidity and salt air.</p>
+          <p>New custom cabinetry or refacing of sound existing boxes, with door styles, finishes and hardware chosen for Gulf Coast humidity and salt air.</p>
           <span class="related-card-link">Learn more →</span>
         </a>
         <a href="/services/countertops-and-backsplashes/" class="related-card">
           <h3>Countertops and Backsplashes</h3>
-          <p>Quartz, quartzite, granite and porcelain slab countertops with matching or contrasting backsplashes, templated, fabricated and installed on a named week.</p>
+          <p>Quartz, quartzite, granite and porcelain slab countertops with matching or contrasting backsplashes, templated on the set cabinets, then fabricated and installed.</p>
           <span class="related-card-link">Learn more →</span>
         </a>
         <a href="/services/kitchen-and-bath-remodeling/" class="related-card">
           <h3>Kitchen and Bath Remodeling</h3>
-          <p>Kitchen and bathroom remodels run as one project: shared trades, one permit set, one schedule in weeks and one point of contact for both rooms.</p>
+          <p>A kitchen and a bathroom remodeled as one project, so the plumber and electrician rough in both rooms together under one set of permits.</p>
           <span class="related-card-link">Learn more →</span>
         </a>
       </div>
@@ -5308,7 +5349,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
       <div class="areas-header">
         <span class="section-eyebrow">Where We Work</span>
         <h2 class="section-title" id="areas-heading">Serving Naples & Southwest Florida</h2>
-        <p class="section-subtitle" style="margin:0 auto 32px;">Kitchen remodeling for houses, condos and gated communities within about 25 miles of Naples, across Collier and south Lee County.</p>
+        <p class="section-subtitle" style="margin:0 auto 32px;">We work within about 25 miles of Naples, from Marco Island and Golden Gate up to Bonita Springs and Estero.</p>
       </div>
       <div class="areas-grid">
         <a href="/" class="area-card" data-area="Naples"><span class="area-card-name">Naples</span><svg class="area-card-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -5325,8 +5366,8 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
   <section class="quote-form-section" aria-labelledby="quote-form-heading">
     <div class="container">
       <div class="quote-form-card form-variant-inline-panel">
-        <h2 id="quote-form-heading">Get a Condo and HOA Kitchen Remodels Quote</h2>
-        <p class="quote-form-sub">Tell us about your project and you&rsquo;ll hear back within one business day.</p>
+        <h2 id="quote-form-heading">Set Up a Consultation About Condo and HOA Kitchen Remodels</h2>
+        <p class="quote-form-sub">A few details about the kitchen help us come prepared.</p>
         <form class="quote-form" action="https://leads-proxy.jeongpark95.workers.dev" method="POST" name="quote-lead" data-leads-form>
           <input type="hidden" name="run_id" value="kitchenremodel-naples-001">
           <div class="hp-field" aria-hidden="true"><input type="text" name="company_website" tabindex="-1" autocomplete="off"></div>
@@ -5338,17 +5379,17 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
           </div>
           <div class="quote-form-row">
             <input type="email" name="email" placeholder="Email (optional)" autocomplete="email" aria-label="Email address">
-            <input type="text" name="message" placeholder="What do you need done?" aria-label="Project details">
+            <input type="text" name="message" placeholder="Tell us about the kitchen: its size and what you want to change." aria-label="Project details">
           </div>
           <div class="cf-turnstile" data-sitekey="0x4AAAAAAGEhzYf9wGkV4IbN" data-size="flexible" data-theme="light"></div>
           <input type="hidden" name="cf-sitekey" value="0x4AAAAAAGEhzYf9wGkV4IbN">
-          <button type="submit" class="quote-form-submit">Request a Quote</button>
+          <button type="submit" class="quote-form-submit">Request a Consultation</button>
           <p class="form-consent">By sending this, you agree we can share your details with a local contractor who'll get in touch. <a href="/privacy/">Privacy Policy</a></p>
         </form>
         <div class="form-thank-you" aria-live="polite">
           <div class="form-thank-you-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
           <h3>We&rsquo;ve got your request!</h3>
-          <p>You&rsquo;ll hear back within one business day. Need to talk sooner? Call <a href="tel:+12395550100">+1 (239) 555-0100</a>.</p>
+          <p>Thanks, we have your details and will reply about your kitchen. Need to talk sooner? Call <a href="tel:+12395550100">+1 (239) 555-0100</a>.</p>
         </div>
       </div>
     </div>
@@ -5356,8 +5397,8 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
 
   <section id="cta-band" aria-labelledby="cta-heading" style="--cta-photo:url('/images/cta_bg.webp')">
     <div class="container">
-      <h2 id="cta-heading">Ready to See Your Kitchen Measured and Planned?</h2>
-      <p>Request a no-obligation consultation. We will measure the room and talk through layout and materials, and if you go ahead, the project starts with a drawn plan, a written scope and a schedule in weeks.</p>
+      <h2 id="cta-heading">Thinking About a New Kitchen in Naples?</h2>
+      <p>Call or send the form to set up a no-obligation consultation. We come out, measure the room and talk through layout, cabinets and stone with you, and you decide from there whether to go ahead.</p>
       <a href="/contact/" class="cta-band-btn">Request a Consultation</a>
     </div>
   </section>
@@ -5366,7 +5407,7 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
 
 <footer id="site-footer" role="contentinfo" class="footer-variant-light-minimal">
   <div class="footer-top"><div class="container"><div class="footer-grid">
-    <div class="footer-col"><h4><a href="/" class="footer-brand-link">Naples Kitchen Remodelers</a></h4><p>Design-build kitchen remodeling for Naples, Marco Island, Bonita Springs, Estero and Golden Gate. Measured plans, written scopes and schedules stated in weeks, including condo and HOA projects managed while you are away.</p><address class="footer-nap" style="font-style:normal;"><span>Naples, Florida</span><br><a href="tel:+12395550100" style="color:rgba(255,255,255,0.65);">+1 (239) 555-0100</a></address></div>
+    <div class="footer-col"><h4><a href="/" class="footer-brand-link">Naples Kitchen Remodelers</a></h4><p>Kitchen remodeling for houses and condos in Naples, Marco Island, Bonita Springs, Estero and Golden Gate, from cabinets and countertops to full remodels.</p><address class="footer-nap" style="font-style:normal;"><span>Naples, Florida</span><br><a href="tel:+12395550100" style="color:rgba(255,255,255,0.65);">+1 (239) 555-0100</a></address></div>
     <div class="footer-col"><h4>Services</h4><ul>
             <li><a href="/services/full-kitchen-remodels/">Full Kitchen Remodels</a></li>
             <li><a href="/services/custom-cabinets-and-refacing/">Custom Cabinets and Refacing</a></li>
@@ -5374,14 +5415,14 @@ body.look-plain #hero.hero-variant-photo-beside + #trust-band.trust-variant-lift
             <li><a href="/services/condo-and-hoa-kitchen-remodels/">Condo and HOA Kitchen Remodels</a></li>
             <li><a href="/services/kitchen-and-bath-remodeling/">Kitchen and Bath Remodeling</a></li>
 </ul></div>
-    <div class="footer-col"><h4>Inquiry</h4><ul><li><a href="/contact/">Request Quote</a></li><li><a href="/about/">About Us</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/blog/">Blog</a></li><li><a href="/cost-guides/kitchen-remodel-cost-naples-fl/">Price Guide</a></li><li><a href="/privacy/">Privacy Policy</a></li><li><a href="/terms/">Terms of Service</a></li></ul></div>
+    <div class="footer-col"><h4>Inquiry</h4><ul><li><a href="/contact/">Request a Consultation</a></li><li><a href="/about/">About Us</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/blog/">Blog</a></li><li><a href="/cost-guides/kitchen-remodel-cost-naples-fl/">Price Guide</a></li><li><a href="/privacy/">Privacy Policy</a></li><li><a href="/terms/">Terms of Service</a></li></ul></div>
     <div class="footer-col"><h4>Serving Southwest Florida</h4><ul><li><a href="/">Naples</a></li><li><a href="/areas/marco-island/">Marco Island</a></li><li><a href="/areas/bonita-springs/">Bonita Springs</a></li><li><a href="/areas/estero/">Estero</a></li><li><a href="/areas/golden-gate/">Golden Gate</a></li></ul></div>
   </div></div></div>
   <div class="container"><p class="footer-disclaimer">This site is a free service to assist homeowners in connecting with local service contractors. All contractors are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on this site.</p></div>
   <div class="container"><div class="footer-bottom"><span>© 2026 Naples Kitchen Remodelers. All rights reserved.</span><span>Naples, Florida, United States</span></div></div>
 </footer>
 
-<a id="mobile-cta" href="tel:+12395550100" aria-label="Call us now"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call Us — +1 (239) 555-0100</a>
+<a id="mobile-cta" href="tel:+12395550100" aria-label="Call us now"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.15 12 19.79 19.79 0 011.1 3.18 2 2 0 013.1 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call Us: +1 (239) 555-0100</a>
 
 <script>
   function toggleMenu(btn){var m=document.getElementById('mobile-nav');m.classList.toggle('open');btn.setAttribute('aria-expanded',String(m.classList.contains('open')));}
